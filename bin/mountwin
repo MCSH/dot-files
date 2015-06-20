@@ -1,0 +1,1 @@
+sudo mount -t ntfs-3g /dev/sda4 /home/sajjad/windows || sudo mount -t ntfs-3g -o ro /dev/sda4 /home/sajjad/windows
