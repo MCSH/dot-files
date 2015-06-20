@@ -1,0 +1,9 @@
+.zsh/locals.zsh
+.zsh/log/.zsh_history
+.zsh/projects.zsh
+.zsh/custom
+!.zsh/custom/plugins/example
+!.zsh/custom/example.zsh
+.zsh/*.swp
+!.zsh/custom/example.zshcache
+.zsh/cache/
