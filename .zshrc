@@ -59,6 +59,9 @@ plugins=(git web-search jump)
 export PATH="/home/sajjad/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+#export default plugin:
+export EDITOR="vim"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -85,3 +88,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+#tmuxinator:
+source ~/.zsh/tmuxinator.zsh
+
+
