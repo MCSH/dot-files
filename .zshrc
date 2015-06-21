@@ -92,4 +92,5 @@ source $ZSH/oh-my-zsh.sh
 #tmuxinator:
 #source ~/.zsh/tmuxinator.zsh
 
-
+#ls alias:
+alias ld='ls -a'
