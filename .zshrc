@@ -94,3 +94,6 @@ source $ZSH/oh-my-zsh.sh
 
 #ls alias:
 alias ld='ls -a'
+
+#vim alias
+vimr() { vim --remote-send "<esc>:vsp $(readlink -f $@)<CR>" }
