@@ -23,10 +23,10 @@ root: ~/src
 
 windows:
   - editor:
-      layout: 9f62,205x57,0,0{119x57,0,0,0,85x57,120,0[85x28,120,0,1,85x28,120,29,2]} 
+      layout: b96f,205x57,0,0{121x57,0,0,9,83x57,122,0[83x38,122,0,10,83x18,122,39,11]}
       panes:
         - vim
         - #nothing 
-        - #nothing
+        - cmatrix
 #  - server: bundle exec rails s
 #  - logs: tail -f log/development.log
