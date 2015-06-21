@@ -1,7 +1,7 @@
 # ~/.tmuxinator/dev.yml
 
 name: dev
-root: ~/src
+root: ~/
        
 # Optional tmux socket
 # socket_name: foo
@@ -26,7 +26,7 @@ windows:
       layout: b96f,205x57,0,0{121x57,0,0,9,83x57,122,0[83x38,122,0,10,83x18,122,39,11]}
       panes:
         - vim --servername VIM
-        - #nothing 
+        - clear 
         - cmatrix
 #  - server: bundle exec rails s
 #  - logs: tail -f log/development.log
