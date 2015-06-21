@@ -25,7 +25,7 @@ windows:
   - editor:
       layout: b96f,205x57,0,0{121x57,0,0,9,83x57,122,0[83x38,122,0,10,83x18,122,39,11]}
       panes:
-        - vim
+        - vim --servername VIM
         - #nothing 
         - cmatrix
 #  - server: bundle exec rails s
