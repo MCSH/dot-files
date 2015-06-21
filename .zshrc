@@ -90,6 +90,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #tmuxinator:
-source ~/.zsh/tmuxinator.zsh
+#source ~/.zsh/tmuxinator.zsh
 
 

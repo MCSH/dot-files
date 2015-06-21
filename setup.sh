@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILES=".tmux .vim .vimrc bin .zshrc .zsh .tmux.conf"
+FILES=".tmux .vim .vimrc bin .zshrc .zsh .tmux.conf .tmuxinator"
 
 DEST=$1
 
@@ -32,8 +32,6 @@ ask_install(){
 		;;
 	esac
 }
-
-exit 1; #Let's see if anyone can use this
 
 for FILE in $FILES; do
 	ask_install $FILE
