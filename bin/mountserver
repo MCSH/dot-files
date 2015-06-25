@@ -1,0 +1,1 @@
+sshfs server.local:/ ~/server
