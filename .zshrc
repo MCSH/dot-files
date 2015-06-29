@@ -93,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 #source ~/.zsh/tmuxinator.zsh
 
 #ls alias:
-alias ld='ls -a'
+alias lf='ls -a'
 
 #vim alias
 vimr() { vim --remote-send "<esc>:vsp $(readlink -f $@)<CR>" }
