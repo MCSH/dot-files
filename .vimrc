@@ -135,3 +135,9 @@ set splitright
 
 "YouCompleteMe:
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+
+
+"Run Nerdtree on startup
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
