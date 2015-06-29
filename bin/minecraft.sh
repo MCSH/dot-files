@@ -1,1 +1,1 @@
-java -jar app/Minecraft.jar
+java -jar ~/app/Minecraft.jar
