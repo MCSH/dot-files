@@ -15,4 +15,5 @@ The following applications need to be installed:
 * tmuxinator
 * cmatrix
 * LS
+* eclimd
 * (there might be some I'm missing, those are too obvious)
