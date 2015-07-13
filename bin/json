@@ -1,1 +1,1 @@
-echo $(zenity --forms --add-entry=JSON) | python -m json.tool
+echo $(zenity --entry --add-entry=JSON) | python -m json.tool
