@@ -15,5 +15,6 @@ The following applications need to be installed:
 * tmuxinator
 * cmatrix
 * LS
-* eclimd
+* eclimd (not needed, may need cleaning up)
+* virtualenv and virtualenvwrapper
 * (there might be some I'm missing, those are too obvious)
