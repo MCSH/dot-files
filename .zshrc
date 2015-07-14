@@ -97,3 +97,9 @@ alias lf='ls -a'
 
 #vim alias
 vimr() { vim --remote-send "<esc>:vsp $(readlink -f $@)<CR>" }
+
+
+#Virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
