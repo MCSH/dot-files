@@ -23,6 +23,7 @@ ask_install(){
 			read -r -p "File exists, override? [y/N]" response
 			case $reponse in
 				[yY])
+					rm -r -f "$LINK"
 					ln -s "$TARGET" "$LINK"
 					;;
 			esac
