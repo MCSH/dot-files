@@ -95,6 +95,10 @@ source $ZSH/oh-my-zsh.sh
 #ls alias:
 alias lf='ls -a'
 
+
+#alias g++
+#alias g++='g++ -lstdc++'
+
 #vim alias
 vimr() { vim --remote-send "<esc>:vsp $(readlink -f $@)<CR>" }
 
@@ -103,3 +107,7 @@ vimr() { vim --remote-send "<esc>:vsp $(readlink -f $@)<CR>" }
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
+
+
+#GOPATH
+export GOPATH=/home/sajjad/gocode
