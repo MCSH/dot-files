@@ -18,3 +18,4 @@ The following applications need to be installed:
 * eclimd (not needed, may need cleaning up)
 * virtualenv and virtualenvwrapper
 * (there might be some I'm missing, those are too obvious)
+

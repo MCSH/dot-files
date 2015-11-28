@@ -111,3 +111,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 #GOPATH
 export GOPATH=/home/sajjad/gocode
+#Spark installation: 
+export PATH=$PATH:/usr/local/spark/bin
