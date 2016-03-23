@@ -22,26 +22,6 @@
 ;; use shift-arrow to move cursor around split pages
 (windmove-default-keybindings)
 
-;; powerline
-(require 'powerline)
-;; (powerline-default-theme)
-
-(powerline-center-evil-theme)
-
-;; powerline for evil
-;; (require 'powerline-evil)
-
-;; change theme
-;; (powerline-evil-vim-color-theme)
-
-;; backup files
-;; (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
-;; (setq backup-directory-alist
-;;      '((".*" . ,emacs-tmp-dir)))
-;; (setq auto-save-file-name-transforms
-;;      '(("." ,emacs-tmp-dir t)))
-;;(setq auto-save-list-file-prefix
-;;      emacs-tmp-dir)
 
 ;; disable backup files
 (setq make-backup-files nil)
@@ -63,36 +43,12 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+;; Load my theme and setting for powerline
+(require 'powerline-MCSH)
+
 ;; modify evil
 (evil-ex-define-cmd "k[ill]" 'kill-this-buffer)
 ;; (evil-ex-define-cmd "q" 'kill-this-buffer)
-
-;;(evil-define-command evil-quit (&optional force)
-;;  "Closes the current window, current frame, Emacs.
-;;If the current frame belongs to some client the client connection
-;;is closed."
-;;  :repeat nil
-;;  (interactive "<!>")
-;;  (if (not(equal (buffer-name) "*scratch*"))
-;;      (kill-this-buffer)
-;;  (condition-case nil
-;;      (delete-window)
-;;    (error
-;;     (if (and (boundp 'server-buffer-clients)
-;;              (fboundp 'server-edit)
-;;              (fboundp 'server-buffer-done)
-;;              server-buffer-clients)
-;;         (if force
-;;             (server-buffer-done (current-buffer))
-;;           (server-edit))
-;;       (condition-case nil
-;;           (delete-frame)
-;;         (error
-;;          (if force
-;;              (kill-emacs)
-;;            (save-buffers-kill-emacs)))))))))
-
-
 
 ;; tabbar
 (require 'tabbar)
@@ -100,5 +56,3 @@
 
 (global-set-key [(meta left)] 'tabbar-backward)
 (global-set-key [(meta right)] 'tabbar-forward)
-
-
