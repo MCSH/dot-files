@@ -26,11 +26,13 @@
 (require 'powerline)
 ;; (powerline-default-theme)
 
+(powerline-center-evil-theme)
+
 ;; powerline for evil
- (require 'powerline-evil)
+;; (require 'powerline-evil)
 
 ;; change theme
- (powerline-evil-vim-color-theme)
+;; (powerline-evil-vim-color-theme)
 
 ;; backup files
 ;; (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
