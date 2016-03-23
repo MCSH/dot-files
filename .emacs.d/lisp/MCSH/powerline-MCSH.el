@@ -6,27 +6,77 @@
 ;; (powerline-default-theme) ;; old theme
 ;; (powerline-center-evil-theme)
 
-
-;; handle different color based on mode
-(defun MCSH-get-color ()
-  "Get the collor for current mode"
-  (interactive)
-  (setq MCSH-evil-mode (symbol-name evil-state))
-  (cond
-   ((eq MCSH-evil-mode "normal") "goldenrod")
-   ((eq MCSH-evil-mode "insert") "blue")
-   (t "grey11") ;; Default
-   ))
-
-
-(defface MCSH-evil-active-face-default '((t (:background "grey11" :inherit mode-line)))
+(defface MCSH-evil-active-default '((t (:background "grey11" :inherit mode-line)))
   "Powerline face1 MCSH."
   :group 'powerline)
 
-(defface MCSH-evil-inactive-face-default
-  '((t (:background "grey11" :inherit mode-line-inactive)))
+(defface MCSH-evil-inactive-default
+  '((t (:background "grey22" :inherit mode-line-inactive)))
   "Powerline face inactive MCSH 1."
   :group 'powerline)
+
+(defface MCSH-evil-active-normal '((t (:background "goldenrod" :inherit mode-line)))
+  "Powerline face1 MCSH."
+  :group 'powerline)
+
+;;(defface MCSH-evil-inactive-normal
+;;  '((t (:background "goldenrod" :inherit mode-line-inactive)))
+;;  "Powerline face inactive MCSH 1."
+ ;; :group 'powerline)
+
+(defface MCSH-evil-active-insert '((t (:background "blue" :inherit mode-line)))
+  "Powerline face1 MCSH."
+  :group 'powerline)
+
+ ;;(defface MCSH-evil-inactive-insert
+ ;; '((t (:background "blue" :inherit mode-line-inactive)))
+  ;;"Powerline face inactive MCSH 1."
+  ;;:group 'powerline)
+
+(defface MCSH-evil-active-replace '((t (:background "magenta" :inherit mode-line)))
+  "Powerline face1 MCSH."
+  :group 'powerline)
+
+ ;;(defface MCSH-evil-inactive-replace
+ ;; '((t (:background "magenta" :inherit mode-line-inactive)))
+ ;; "Powerline face inactive MCSH 1."
+ ;; :group 'powerline)
+
+(defface MCSH-evil-active-visual '((t (:background "DarkGoldenrod4" :inherit mode-line)))
+  "Powerline face1 MCSH."
+  :group 'powerline)
+
+ ;;(defface MCSH-evil-inactive-visual
+ ;; '((t (:background "DarkGoldenrod4" :inherit mode-line-inactive)))
+  ;;"Powerline face inactive MCSH 1."
+  ;;:group 'powerline)
+
+(defface MCSH-evil-active-operator '((t (:background "cyan" :inherit mode-line)))
+  "Powerline face1 MCSH."
+  :group 'powerline)
+
+ ;;(defface MCSH-evil-inactive-operator
+ ;; '((t (:background "cyan" :inherit mode-line-inactive)))
+ ;; "Powerline face inactive MCSH 1."
+ ;; :group 'powerline)
+
+(defface MCSH-evil-active-motion '((t (:background "tan2" :inherit mode-line)))
+  "Powerline face1 MCSH."
+  :group 'powerline)
+
+ ;;(defface MCSH-evil-inactive-motion
+ ;; '((t (:background "tan2" :inherit mode-line-inactive)))
+ ;; "Powerline face inactive MCSH 1."
+ ;; :group 'powerline)
+
+(defface MCSH-evil-active-emacs '((t (:background "violet" :inherit mode-line)))
+  "Powerline face1 MCSH."
+  :group 'powerline)
+
+ ;;(defface MCSH-evil-inactive-emacs
+ ;; '((t (:background "violet" :inherit mode-line-inactive)))
+ ;; "Powerline face inactive MCSH 1."
+ ;; :group 'powerline)
 
 (defun MCSH-evil-face (active)
   (interactive)
@@ -48,7 +98,6 @@
 			  (face1 (if active 'powerline-active1 'powerline-inactive1))
 			  (face2 (if active 'powerline-active2 'powerline-inactive2))
 			  (facemode (MCSH-evil-face active))
-			  (facemode face1)
 			  (separator-left (intern (format "powerline-%s-%s"
 							  (powerline-current-separator)
 							  (car powerline-default-separator-dir))))
