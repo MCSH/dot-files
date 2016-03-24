@@ -19,3 +19,4 @@ The following applications need to be installed:
 * virtualenv and virtualenvwrapper
 * (there might be some I'm missing, those are too obvious)
 
+Run installation for fonts, emacs elpa thingys and oh-my-zsh powerline
