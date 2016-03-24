@@ -50,7 +50,9 @@ ZSH_THEME="powerline"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git jump web-search)
+plugins=(git jump web-search zsh-syntax-highlighting)
+
+#NOTE: syntax must be last
 
 # User configuration
 
