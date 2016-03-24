@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILES=".tmux .vim .vimrc bin .zshrc .zsh .tmux.conf .tmuxinator .emacs .emacs.d"
+FILES=".tmux .vim .vimrc bin .zshrc .zsh .tmux.conf .tmuxinator .emacs .emacs.d .oh-my-zsh"
 
 DEST=$1
 
