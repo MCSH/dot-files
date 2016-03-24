@@ -20,3 +20,5 @@ The following applications need to be installed:
 * (there might be some I'm missing, those are too obvious)
 
 Run installation for fonts, emacs elpa thingys and oh-my-zsh powerline
+
+To see all colors in oh-my-zsh run: spectrum-bls or spectrum-ls
