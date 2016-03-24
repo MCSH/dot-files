@@ -5,3 +5,4 @@
 .zsh/*.swp
 .zsh/cache/
 *~
+.emacs.d/ac-comphist.dat
