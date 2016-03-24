@@ -14,7 +14,7 @@
 
 ;; got this using: C-0 M-: package-activated-list RET
 (defvar my/packages
-  '(evil goto-chg undo-tree goto-chg undo-tree))
+ '(auto-complete popup evil-magit magit magit-popup dash async git-commit with-editor dash async dash with-editor dash async dash async evil goto-chg undo-tree f dash s goto-chg magit magit-popup dash async git-commit with-editor dash async dash with-editor dash async dash async magit-popup dash async popup s undo-tree with-editor dash async)) 
 
 (require 'evil)
 (evil-mode 1)
@@ -56,3 +56,6 @@
 
 (global-set-key [(meta left)] 'tabbar-backward)
 (global-set-key [(meta right)] 'tabbar-forward)
+
+;; Auto Complete
+(ac-config-default)
