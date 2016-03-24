@@ -19,6 +19,8 @@
 (require 'evil)
 (evil-mode 1)
 
+(require 'evil-magit)
+
 ;; use shift-arrow to move cursor around split pages
 (windmove-default-keybindings)
 
