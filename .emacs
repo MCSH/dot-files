@@ -64,3 +64,6 @@
 
 ;; Always follow symlinks
 (setq vc-follow-symlinks t)
+
+;; evil - org mode
+(require 'evil-org)
