@@ -59,3 +59,6 @@
 
 ;; Auto Complete
 (ac-config-default)
+
+;; Always follow symlinks
+(setq vc-follow-symlinks t)
