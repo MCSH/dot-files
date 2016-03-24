@@ -10,6 +10,3 @@
 [submodule ".zsh/zsh-syntax-highlighting"]
 	path = .zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule ".emacs.d/lisp/evil-org-mode"]
-	path = .emacs.d/lisp/evil-org-mode
-	url = https://github.com/edwtjo/evil-org-mode.git
