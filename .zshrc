@@ -55,3 +55,4 @@ PATH=$PATH:/home/sajjad/bin
 export WORKON_HOME=~/.Envs
 source /usr/bin/virtualenvwrapper.sh
 
+alias gstat="git status" gadd="git add" gcom="git commit -m"
