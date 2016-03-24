@@ -1,10 +1,10 @@
 # FreeAgent puts the powerline style in zsh !
 
-MCSH_COLOR1=cyan
-MCSH_COLOR2=magenta
+MCSH_COLOR1=057
+MCSH_COLOR2=019
 MCSH_COLOR3=red
 MCSH_COLOR4=black
-MCSH_COLOR5=white
+MCSH_COLOR5=167
 
 if [ "$POWERLINE_DATE_FORMAT" = "" ]; then
   POWERLINE_DATE_FORMAT=%D{%Y-%m-%d}
