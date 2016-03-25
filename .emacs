@@ -67,3 +67,6 @@
 
 ;; evil - org mode
 (require 'evil-org)
+
+;; Set the scratch message:
+(setq initial-scratch-message "Live long and prosper")

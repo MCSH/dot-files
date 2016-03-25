@@ -63,5 +63,5 @@ source /usr/bin/virtualenvwrapper.sh
 
 alias gstat="git status" gadd="git add" gcom="git commit -m"
 
-alias emacs='emacsclient -n  -a emacs'
-alias emacs-win='emacsclient -n -c -a emacs'
+alias emacs='emacsclient -n  -a ""'
+alias emacs-win='emacsclient -n -c -a ""'
