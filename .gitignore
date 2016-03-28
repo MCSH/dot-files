@@ -6,3 +6,4 @@
 .zsh/cache/
 *~
 .emacs.d/ac-comphist.dat
+.emacs.d/games/*-scores
