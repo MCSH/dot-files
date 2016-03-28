@@ -94,5 +94,5 @@ ${color lightgrey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
 ${color lightgrey} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
 $hr
 $color Syslog:
-${exec journalctl -n 10 |fmt -s -w 100 }
+${exec journalctl -n 10 |fmt -s -w 60 -g 60}
 ]]
