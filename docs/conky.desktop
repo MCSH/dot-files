@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Conky
+Comment=Start conky script
+Exec=/usr/sbin/conky -d
+OnlyShowIn=GNOME;
+X-GNOME-Autostart-Phase=Application
