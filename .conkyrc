@@ -70,7 +70,7 @@ conky.config = {
 }
 
 conky.text = [[
-${scroll 16 $nodename - $sysname $kernel on $machine | } $tztime
+${scroll 16 $nodename - $sysname $kernel on $machine | } ${color grey}$tztime
 $hr
 ${color grey}Battery: $color ${battery BAT0} ${color grey}$battery_time ${alignr}${battery_bar 8,70 BAT0}
 $hr
