@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=touchpad
+GenericName=Disable Touchpad while Typing
+Comment=Disable touchpad click and scroll for 2 seconds while typing.
+Exec=syndaemon -i 2 -t -k -d
+Terminal=false
+Type=Application
+X-Gnome-Autostart-enabled=true
