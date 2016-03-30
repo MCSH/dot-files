@@ -124,7 +124,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 #Test
 bindsym mod1+Control+t exec "gnome-terminal"
-bindsym mod1+Control+e exec 'emacsclient -n -c -a ""'
+bindsym mod1+Control+e exec zsh -c 'emacsclient -n -c -a ""'
 #bindsym mod1+Control+e exec "i3-nagbar -m test"
 
 # resize window (you can also use the mouse for that)
