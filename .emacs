@@ -70,3 +70,11 @@
 
 ;; Set the scratch message:
 (setq initial-scratch-message "Live long and prosper")
+
+
+
+;; Set tab:
+(setq tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
+(defvaralias 'python-indent 'tab-width)
