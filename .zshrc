@@ -55,8 +55,7 @@ source $ZSH/oh-my-zsh.sh
 
 # PATH
 PATH=$PATH:/home/sajjad/bin
-
-
+PATH=$PATH:/home/sajjad/app/Telegram
 
 export WORKON_HOME=~/.Envs
 source /usr/bin/virtualenvwrapper.sh
