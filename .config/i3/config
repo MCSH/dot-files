@@ -144,6 +144,9 @@ bindsym $mod+o move workspace to output eDP-1
 bindsym $mod+shift+p move container to output HDMI-1
 bindsym $mod+shift+o move container to output eDP-1
 
+#Screen brightness -- needs light
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 #Test
 bindsym mod1+Control+e exec zsh -c 'emacsclient -n -c -a ""'
 #bindsym mod1+Control+e exec "i3-nagbar -m test"
@@ -191,3 +194,6 @@ exec --no-startup-id setxkbmap -model pc104 -layout us,ir -option grp:alt_shift_
 
 #Sound manager
 exec --no-startup-id pa-applet
+
+#Touch Tap
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1

@@ -1,1 +1,1 @@
-while true; do LS; done
+while true; do sl; done
