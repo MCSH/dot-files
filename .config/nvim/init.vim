@@ -39,15 +39,12 @@ set statusline+=%=                           " right align
 set statusline+=%b,0x%-8B\                   " current char
 set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
-
 "turn on syntax highlighting
 syntax on
-
 
 " More natural splits
 set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
-
 
 set hlsearch            " Highlight search results.
 set ignorecase          " Make searching case insensitive
@@ -71,24 +68,23 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/deoplete.nvim'
 Plug 'hdima/python-syntax'
+Plug 'tpope/vim-fugitive'
 " Add plugins to &runtimepath
 call plug#end()
 
 
+"Airline themes
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized dark'
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
-let g:airline_theme= 'serene'
-
+"Highlight all python syntaxes
 let python_highlight_all = 1
+
+"Disable .pyc files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
+set encoding=utf-8
