@@ -79,7 +79,7 @@ call plug#end()
 
 "Airline themes
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized dark'
+let g:airline_theme='dark'
 
 "Highlight all python syntaxes
 let python_highlight_all = 1

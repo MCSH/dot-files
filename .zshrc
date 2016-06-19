@@ -3,6 +3,7 @@
 
 #Theme
 ZSH_THEME="gallois"
+ZSH_THEME="eastwood"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
@@ -16,12 +17,7 @@ plugins=(git jump web-search zsh-syntax-highlighting)
   
 source $ZSH/oh-my-zsh.sh
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
+export EDITOR='nvim'
 
 # PATH
 PATH=$PATH:/home/sajjad/bin
