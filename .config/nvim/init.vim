@@ -73,6 +73,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/deoplete.nvim'
 Plug 'hdima/python-syntax'
 Plug 'tpope/vim-fugitive'
+Plug 'Yggdroot/indentLine'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -86,5 +87,10 @@ let python_highlight_all = 1
 
 "Disable .pyc files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
+
+"Indent Line Plugin
+let g:indentLine_color_term = 249
+let g:indentLine_color_term = 172
+let g:indentLine_char = '|'
 
 set encoding=utf-8
