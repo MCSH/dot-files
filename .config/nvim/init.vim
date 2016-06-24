@@ -77,7 +77,6 @@ Plug 'Yggdroot/indentLine'
 " Add plugins to &runtimepath
 call plug#end()
 
-
 "Airline themes
 let g:airline_powerline_fonts = 1
 let g:airline_theme='dark'
@@ -89,7 +88,6 @@ let python_highlight_all = 1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
 "Indent Line Plugin
-let g:indentLine_color_term = 249
 let g:indentLine_color_term = 172
 let g:indentLine_char = '|'
 
