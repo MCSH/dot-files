@@ -7,4 +7,5 @@
 *~
 .emacs.d/ac-comphist.dat
 .emacs.d/games/*-scores
-.vim/plugged/*
+.config/nvim/plugged/*
+.directory
