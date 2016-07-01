@@ -37,3 +37,7 @@ alias emacs-win='emacsclient -n -c -a ""'
 
 alias ls='ls -v --color=tty'
 PATH=$PATH:/opt/cuda/bin/
+
+
+#Enabling vi-mode
+bindkey -v
