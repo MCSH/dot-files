@@ -7,7 +7,7 @@ ZSH_THEME="eastwood"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
-plugins=(git jump web-search zsh-syntax-highlighting)
+plugins=(git jump web-search vi-mode zsh-syntax-highlighting history-substring-search)
 
 #NOTE: syntax must be last
 
@@ -38,6 +38,21 @@ alias emacs-win='emacsclient -n -c -a ""'
 alias ls='ls -v --color=tty'
 PATH=$PATH:/opt/cuda/bin/
 
+#Substring search config:
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
-#Enabling vi-mode
-bindkey -v
+# bind UP and DOWN arrow keys (compatibility fallback
+# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
