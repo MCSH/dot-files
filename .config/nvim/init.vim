@@ -72,6 +72,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'hdima/python-syntax'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
+Plug 'zchee/deoplete-clang'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -89,4 +90,11 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 let g:indentLine_color_term = 172
 let g:indentLine_char = '|'
 
+"deoplete-clang config:
+"g:deoplete#sources#clang#libclang_path
+"g:deoplete#sources#clang#clang_header
+"g:deoplete#sources#clang#std
+"g:deoplete#sources#clang#flags
+"g:deoplete#sources#clang#sort_algo
+"g:deoplete#sources#clang#clang_complete_database
 set encoding=utf-8
