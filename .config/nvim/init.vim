@@ -18,6 +18,15 @@ syntax enable
 set number
 "show relative line number
 set relativenumber
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set norelativenumber
+    else
+        set relativenumber
+    endif
+endfunc
+
+nnoremap <F2> :call NumberToggle()<cr>
 
 "highlight matching bracket when a new one is inserted
 set showmatch
