@@ -27,7 +27,7 @@ function! NumberToggle()
 endfunc
 
 nnoremap <F2> :call NumberToggle()<cr>
-
+"
 "highlight matching bracket when a new one is inserted
 set showmatch
 
@@ -106,4 +106,8 @@ let g:indentLine_char = '|'
 "g:deoplete#sources#clang#flags
 "g:deoplete#sources#clang#sort_algo
 "g:deoplete#sources#clang#clang_complete_database
+
+"Map F3 to toggle NERDTree
+nmap <F3> <plug>NERDTreeTabsToggle<cr>
+
 set encoding=utf-8
