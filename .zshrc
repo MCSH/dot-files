@@ -58,3 +58,5 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 alias vim=nvim
+
+export PATH=$PATH:/home/sajjad/.gem/ruby/2.3.0/bin
