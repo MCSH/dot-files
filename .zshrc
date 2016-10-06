@@ -26,7 +26,7 @@ PATH=$PATH:/home/sajjad/app/Telegram
 export WORKON_HOME=~/.Envs
 source /usr/bin/virtualenvwrapper.sh
 
-alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push"
+alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"
 
 alias emacs='emacsclient -n  -a ""'
 alias emacs-win='emacsclient -n -c -a ""'
@@ -60,3 +60,5 @@ bindkey -M vicmd 'j' history-substring-search-down
 alias vim=nvim
 
 export PATH=$PATH:/home/sajjad/.gem/ruby/2.3.0/bin
+
+alias chrome="google-chrome-stable"

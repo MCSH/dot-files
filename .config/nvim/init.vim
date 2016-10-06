@@ -26,6 +26,8 @@ function! NumberToggle()
     endif
 endfunc
 
+set norelativenumber
+
 nnoremap <F2> :call NumberToggle()<cr>
 "
 "highlight matching bracket when a new one is inserted
@@ -80,8 +82,9 @@ Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/deoplete.nvim'
 Plug 'hdima/python-syntax'
 Plug 'tpope/vim-fugitive'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 Plug 'zchee/deoplete-clang'
+Plug 'jiangmiao/auto-pairs'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -96,8 +99,8 @@ let python_highlight_all = 1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
 "Indent Line Plugin
-let g:indentLine_color_term = 172
-let g:indentLine_char = '|'
+"let g:indentLine_color_term = 172
+"let g:indentLine_char = '|'
 
 "deoplete-clang config:
 "g:deoplete#sources#clang#libclang_path
