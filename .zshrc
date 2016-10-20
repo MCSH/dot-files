@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/sajjad/.oh-my-zsh
+export ZSH=/home/sajjad/.oh-my-zsh
 
 #Theme
 ZSH_THEME="gallois"
@@ -7,13 +7,13 @@ ZSH_THEME="eastwood"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
-plugins=(git jump web-search zsh-syntax-highlighting history-substring-search)
+plugins=(git jump zsh-syntax-highlighting history-substring-search)
 
 #NOTE: syntax must be last
 
 # User configuration
 
- export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
   
 source $ZSH/oh-my-zsh.sh
 
