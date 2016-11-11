@@ -62,3 +62,6 @@ alias vim=nvim
 export PATH=$PATH:/home/sajjad/.gem/ruby/2.3.0/bin
 
 alias chrome="google-chrome-stable"
+
+
+export PATH=$PATH:/home/sajjad/Android/Sdk/tools
