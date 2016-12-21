@@ -79,12 +79,15 @@ Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'hdima/python-syntax'
 Plug 'tpope/vim-fugitive'
 "Plug 'Yggdroot/indentLine'
 Plug 'zchee/deoplete-clang'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Shougo/neoinclude.vim'
+" Make sure npm is installed
+Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo npm install -g tern' }
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -102,15 +105,65 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 "let g:indentLine_color_term = 172
 "let g:indentLine_char = '|'
 
-"deoplete-clang config:
-"g:deoplete#sources#clang#libclang_path
-"g:deoplete#sources#clang#clang_header
-"g:deoplete#sources#clang#std
-"g:deoplete#sources#clang#flags
-"g:deoplete#sources#clang#sort_algo
-"g:deoplete#sources#clang#clang_complete_database
 
 "Map F3 to toggle NERDTree
 nmap <F3> <plug>NERDTreeTabsToggle<cr>
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+"deoplete-clang config:
+"use [sudo] find / -name libclang.so to find this:
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+
 set encoding=utf-8
+
+
+"Move window between tabs:
+function MoveToPrevTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() != 1
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabprev
+    endif
+    vsp
+  else
+    close!
+    exe "0tabnew"
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+
+function MoveToNextTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() < tab_nr
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabnext
+    endif
+    vsp
+  else
+    close!
+    tabnew
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+
+map <C-w>n :call MoveToNextTab()<CR><C-w>H
+map <C-w>m :call MoveToPrevTab()<CR><C-w>H
