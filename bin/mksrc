@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SRC=~/src/
+
+SRC=$SRC/$(date +%G)/
+
+num=$(ls $SRC | wc -l  )
+echo $num
+proj=$SRC/$num.$1
+echo $proj
+
+
+if [ ! -z "$1" ] ;
+then
+    mkdir $proj
+fi
+
+if [ ! -z "$2" ] ;
+then
+    cd $proj
+    git clone $2 .
+fi
