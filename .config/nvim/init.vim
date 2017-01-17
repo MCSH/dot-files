@@ -167,3 +167,8 @@ endfunc
 
 map <C-w>n :call MoveToNextTab()<CR><C-w>H
 map <C-w>m :call MoveToPrevTab()<CR><C-w>H
+
+function MakeFile_setting()
+    setlocal shiftwidth=8
+    setlocal noexpandtab
+endfunc
