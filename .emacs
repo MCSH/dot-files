@@ -6,7 +6,6 @@
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; evil mode
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
@@ -16,6 +15,9 @@
 (defvar my/packages
  '(auto-complete popup evil-magit magit magit-popup dash async git-commit with-editor dash async dash with-editor dash async dash async evil goto-chg undo-tree f dash s goto-chg magit magit-popup dash async git-commit with-editor dash async dash with-editor dash async dash async magit-popup dash async popup s undo-tree with-editor dash async)) 
 
+
+;; evil mode
+;;;; Change C-z for switching evil to C-`
 (require 'evil)
 (evil-mode 1)
 
@@ -78,3 +80,6 @@
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'cperl-indent-level 'tab-width)
 (defvaralias 'python-indent 'tab-width)
+
+;; Set suspend emacs
+(evil-ex-define-cmd "suspend" 'suspend-frame)
