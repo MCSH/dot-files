@@ -56,7 +56,7 @@
 
 ;; tabbar
 (require 'tabbar)
-(tabbar-mode)
+;;(tabbar-mode)
 
 (global-set-key [(meta left)] 'tabbar-backward)
 (global-set-key [(meta right)] 'tabbar-forward)
@@ -83,3 +83,35 @@
 
 ;; Set suspend emacs
 (evil-ex-define-cmd "suspend" 'suspend-frame)
+
+;; tabbar config
+ ;; 1- if remove-if is not found, add here (require 'cl)
+ ;; 2- in my emacs 23, I had to remove the "b" from "lambda (b)"
+(require 'cl)
+(when (require 'tabbar nil t)
+  (setq tabbar-buffer-list-function
+		(lambda ()
+		  (remove-if
+		   (lambda(buffer)
+			 (if (string= (buffer-name buffer) "*scratch*") nil
+			   (find (aref (buffer-name buffer) 0) " *")))
+		   (buffer-list))))
+  (tabbar-mode))
+
+;; Font increase and decrease
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+	(json-mode lua-mode f evil-magit evil-leader auto-complete))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
