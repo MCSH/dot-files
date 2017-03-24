@@ -51,7 +51,7 @@
 (require 'powerline-MCSH)
 
 ;; modify evil
-(evil-ex-define-cmd "k[ill]" 'kill-this-buffer)
+(evil-ex-define-cmd "k[ill]" 'kill-buffer)
 ;; (evil-ex-define-cmd "q" 'kill-this-buffer)
 
 ;; tabbar
@@ -75,11 +75,6 @@
 
 
 
-;; Set tab:
-(setq tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
-(defvaralias 'python-indent 'tab-width)
 
 ;; Set suspend emacs
 (evil-ex-define-cmd "suspend" 'suspend-frame)
@@ -93,8 +88,18 @@
 		(lambda ()
 		  (remove-if
 		   (lambda(buffer)
-			 (if (string= (buffer-name buffer) "*scratch*") nil
-			   (find (aref (buffer-name buffer) 0) " *")))
+										;(if (string= (buffer-name buffer) "*scratch*") nil
+										;(find (aref (buffer-name buffer) 0) " *"))
+			 (if (string-match-p (regexp-quote "*Mini") (buffer-name buffer)) t
+			   (if (string-match-p (regexp-quote "*Mess") (buffer-name buffer)) t
+			   (if (string-match-p (regexp-quote "*Echo") (buffer-name buffer)) t
+			   (if (string-match-p (regexp-quote "*server") (buffer-name buffer)) t
+			   (if (string-match-p (regexp-quote "*code") (buffer-name buffer)) t
+			   (if (string-match-p (regexp-quote "*Com") (buffer-name buffer)) t
+			   (if (string-match-p (regexp-quote "*Back") (buffer-name buffer)) t
+			   nil)))))))
+			 
+			 )
 		   (buffer-list))))
   (tabbar-mode))
 
@@ -115,3 +120,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;; Set tab:
+(setq tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
+(defvaralias 'python-indent 'tab-width)
+(setq-default tab-width 4)
