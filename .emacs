@@ -52,6 +52,8 @@
 
 ;; modify evil
 (evil-ex-define-cmd "k[ill]" 'kill-buffer)
+(define-key evil-normal-state-map "ه" 'evil-insert)
+(define-key evil-normal-state-map "خ" 'evil-open-below)
 ;; (evil-ex-define-cmd "q" 'kill-this-buffer)
 
 ;; tabbar
