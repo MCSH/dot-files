@@ -172,3 +172,6 @@ function MakeFile_setting()
     setlocal shiftwidth=8
     setlocal noexpandtab
 endfunc
+
+" Use deoplete.
+let g:tern_request_timeout = 1
