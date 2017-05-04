@@ -17,14 +17,12 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin
   
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='nvim'
+export EDITOR='vim'
 
 # PATH
 PATH=$PATH:/home/sajjad/bin
 PATH=$PATH:/home/sajjad/app/Telegram
 
-export WORKON_HOME=~/.Envs
-source /usr/bin/virtualenvwrapper.sh
 
 alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"
 
@@ -57,11 +55,3 @@ bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-alias vim=nvim
-
-export PATH=$PATH:/home/sajjad/.gem/ruby/2.3.0/bin
-
-alias chrome="google-chrome-stable"
-
-
-export PATH=$PATH:/home/sajjad/Android/Sdk/tools
