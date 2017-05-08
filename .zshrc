@@ -7,7 +7,7 @@ ZSH_THEME="eastwood"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
-plugins=(git jump zsh-syntax-highlighting history-substring-search)
+plugins=(git kubectl jump zsh-syntax-highlighting history-substring-search)
 
 #NOTE: syntax must be last
 
