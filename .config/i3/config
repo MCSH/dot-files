@@ -121,8 +121,8 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 
-assign [class="Telegram"] 10
-assign [class="Skype"] 9
+#assign [class="Telegram"] 10
+#assign [class="Skype"] 9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
