@@ -208,3 +208,5 @@ bindsym $mod+plus [class="Telegram"] scratchpad show
 
 #Thunar
 bindsym mod1+Control+f exec Thunar
+
+exec xfce4-power-manager
