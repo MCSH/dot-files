@@ -175,3 +175,5 @@ endfunc
 
 " Use deoplete.
 let g:tern_request_timeout = 1
+
+set mouse=a
