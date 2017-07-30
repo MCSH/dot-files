@@ -68,3 +68,5 @@ export PATH=$PATH:/home/sajjad/Android/Sdk/tools
 
 # for ssh-agent with systemd from arch wiki
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+alias n=npm
