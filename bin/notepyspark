@@ -1,4 +1,0 @@
-#!/bin/bash
-export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
-export PYSPARK_DRIVER_PYTHON=ipython
-pyspark

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-xclip -o -sel clip | python -m json.tool

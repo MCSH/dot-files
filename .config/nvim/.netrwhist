@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/sajjad/src/2016/3.IT/impress.js/img'
-let g:netrw_dirhist_2='/home/sajjad/Desktop/Last words in Star Wars media - Wikiquote_files'
-let g:netrw_dirhist_3='/home/sajjad/Desktop'
-let g:netrw_dirhist_4='/home/sajjad/src/git/dot-files/.config/nvim/autoload'
-let g:netrw_dirhist_5='/home/sajjad/src/git/dot-files/.config/nvim'

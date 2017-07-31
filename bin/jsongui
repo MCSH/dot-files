@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo $(zenity --entry --add-entry=JSON) | python -m json.tool
