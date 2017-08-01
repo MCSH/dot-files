@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILES=".zshrc"
+FILES=".zshrc .oh-my-zsh"
 
 DEST=$1
 
