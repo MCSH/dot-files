@@ -16,3 +16,6 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Aliases
+alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"
+alias ls='ls -v --color=tty'
+alias vim=nvim
