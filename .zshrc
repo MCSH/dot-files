@@ -14,6 +14,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Variables
 export LANG=en_US.UTF-8
+export PATH=$PATH:~/bin/
 
 # Aliases
 alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"

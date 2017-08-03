@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILES=".zshrc .oh-my-zsh .config/nvim"
+FILES=".zshrc .oh-my-zsh .config/nvim bin"
 
 DEST=$1
 
