@@ -20,3 +20,6 @@ export PATH=$PATH:~/bin/
 alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"
 alias ls='ls -v --color=tty'
 alias vim=nvim
+
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
