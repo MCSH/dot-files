@@ -16,6 +16,9 @@ set expandtab
 "Enable syntax highlighting:
 syntax enable
 
+" Set colorscheme
+colorscheme default
+
 "Line Numbers
 set number
 
@@ -91,6 +94,7 @@ Plug 'sjl/gundo.vim'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'lervag/vimtex' , { 'for': 'tex' } " Maybe disable infavor of vim-polygt? TODO
 Plug 'junegunn/vim-easy-align'
+Plug 'derekwyatt/vim-scala'
 " TODO Plug 'terryma/vim-multiple-cursors' Doesn't work w/ my other plugins
 " TODO Plug 'vim-syntastic/syntastic'
 " TODO https://github.com/justinmk/vim-sneak
@@ -163,13 +167,13 @@ nmap <Leader>l  :Limelight!!<cr>
 
 " Vim indent guide
 " :IndentGuidesToggle
-let g:indent_guides_enable_on_vim_startup = 1
-
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=grey
-hi IndentGuidesEven ctermbg=darkgrey
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
+hi IndentGuidesOdd  ctermbg     = grey
+hi IndentGuidesEven ctermbg     = darkgrey
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size  = 1
+
+let g:indent_guides_enable_on_vim_startup = 1
 
 " Gundo
 nnoremap <Leader>u :GundoToggle<CR>
@@ -197,6 +201,8 @@ let g:minimap_highlight='IncSearch'
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" vim-scala
 
 " Other config
 function MakeFile_setting()
