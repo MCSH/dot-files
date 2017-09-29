@@ -77,7 +77,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/unicode.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'Sudo npm install -g tern' }
 Plug 'ternjs/tern_for_vim'
 Plug 'alerque/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -95,8 +95,9 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'lervag/vimtex' , { 'for': 'tex' } " Maybe disable infavor of vim-polygt? TODO
 Plug 'junegunn/vim-easy-align'
 Plug 'derekwyatt/vim-scala'
+Plug 'ensime/ensime-vim', {'do': 'sudo pip2 install websocket-client sexpdata'} " TODO config???
+Plug 'vim-syntastic/syntastic'
 " TODO Plug 'terryma/vim-multiple-cursors' Doesn't work w/ my other plugins
-" TODO Plug 'vim-syntastic/syntastic'
 " TODO https://github.com/justinmk/vim-sneak
 call plug#end()
 
@@ -203,6 +204,22 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " vim-scala
+
+" Ensime-vim
+" Typecheck after save
+autocmd BufWritePost *.scala silent :EnTypeCheck
+" Type inspection
+nnoremap <leader>t :EnType<CR>
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Other config
 function MakeFile_setting()
