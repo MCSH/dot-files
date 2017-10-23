@@ -97,6 +97,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'derekwyatt/vim-scala'
 Plug 'ensime/ensime-vim', {'do': 'sudo pip2 install websocket-client sexpdata'} " TODO config???
 Plug 'vim-syntastic/syntastic'
+Plug 'xolox/vim-misc' " Req of vim-easytags
+Plug 'xolox/vim-easytags'
 " TODO Plug 'terryma/vim-multiple-cursors' Doesn't work w/ my other plugins
 " TODO https://github.com/justinmk/vim-sneak
 call plug#end()
@@ -221,6 +223,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Vim-easytags
+
 " Other config
 function MakeFile_setting()
     setlocal shiftwidth=8
@@ -234,3 +238,6 @@ nnoremap gf <C-W>vgf
 function! MyOnBattery()
   return readfile('/sys/class/power_supply/AC/online') == ['0']
 endfunction
+
+" Buffer switching
+nnoremap <leader>b :buffers<CR>:buffer<Space>
