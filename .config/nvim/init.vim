@@ -171,7 +171,7 @@ nmap <Leader>l  :Limelight!!<cr>
 " Vim indent guide
 " :IndentGuidesToggle
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg     = grey
+hi IndentGuidesOdd  ctermbg     = 240
 hi IndentGuidesEven ctermbg     = darkgrey
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size  = 1
@@ -241,3 +241,7 @@ endfunction
 
 " Buffer switching
 nnoremap <leader>b :buffers<CR>:buffer<Space>
+
+" Set js tab to 2 space.
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=0 expandtab
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=0 expandtab
