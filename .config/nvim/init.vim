@@ -101,6 +101,7 @@ Plug 'xolox/vim-misc' " Req of vim-easytags
 Plug 'xolox/vim-easytags'
 " TODO Plug 'terryma/vim-multiple-cursors' Doesn't work w/ my other plugins
 " TODO https://github.com/justinmk/vim-sneak
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 "" NERDTREE 
@@ -243,5 +244,5 @@ endfunction
 nnoremap <leader>b :buffers<CR>:buffer<Space>
 
 " Set js tab to 2 space.
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=0 expandtab
-autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=0 expandtab
+autocmd FileType javascript setlocal shiftwidth=2 expandtab
+autocmd FileType css setlocal shiftwidth=2 expandtab
