@@ -97,8 +97,11 @@ Plug 'junegunn/vim-easy-align'
 Plug 'derekwyatt/vim-scala'
 Plug 'ensime/ensime-vim', {'do': 'sudo pip2 install websocket-client sexpdata'} " TODO config???
 Plug 'vim-syntastic/syntastic'
+Plug 'xolox/vim-misc' " Req of vim-easytags
+Plug 'xolox/vim-easytags'
 " TODO Plug 'terryma/vim-multiple-cursors' Doesn't work w/ my other plugins
 " TODO https://github.com/justinmk/vim-sneak
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 "" NERDTREE 
@@ -169,7 +172,7 @@ nmap <Leader>l  :Limelight!!<cr>
 " Vim indent guide
 " :IndentGuidesToggle
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg     = grey
+hi IndentGuidesOdd  ctermbg     = 240
 hi IndentGuidesEven ctermbg     = darkgrey
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size  = 1
@@ -221,6 +224,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Vim-easytags
+
 " Other config
 function MakeFile_setting()
     setlocal shiftwidth=8
@@ -234,3 +239,10 @@ nnoremap gf <C-W>vgf
 function! MyOnBattery()
   return readfile('/sys/class/power_supply/AC/online') == ['0']
 endfunction
+
+" Buffer switching
+nnoremap <leader>b :buffers<CR>:buffer<Space>
+
+" Set js tab to 2 space.
+autocmd FileType javascript setlocal shiftwidth=2 expandtab
+autocmd FileType css setlocal shiftwidth=2 expandtab
