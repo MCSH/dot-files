@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+then
+    COMMIT=HEAD
+else
+    COMMIT=$1
+fi
+
+git commit --fixup=$COMMIT
