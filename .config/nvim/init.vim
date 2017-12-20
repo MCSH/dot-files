@@ -18,6 +18,7 @@ syntax enable
 
 " Set colorscheme
 colorscheme default
+set background=dark
 
 "Line Numbers
 set number
