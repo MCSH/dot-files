@@ -247,3 +247,4 @@ nnoremap <leader>b :buffers<CR>:buffer<Space>
 " Set js tab to 2 space.
 autocmd FileType javascript setlocal shiftwidth=2 expandtab
 autocmd FileType css setlocal shiftwidth=2 expandtab
+autocmd FileType scss setlocal shiftwidth=2 expandtab
