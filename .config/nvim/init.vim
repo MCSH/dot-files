@@ -103,6 +103,7 @@ Plug 'xolox/vim-easytags'
 " TODO Plug 'terryma/vim-multiple-cursors' Doesn't work w/ my other plugins
 " TODO https://github.com/justinmk/vim-sneak
 Plug 'jiangmiao/auto-pairs'
+Plug 'alvan/vim-closetag'
 call plug#end()
 
 "" NERDTREE 
@@ -248,3 +249,7 @@ nnoremap <leader>b :buffers<CR>:buffer<Space>
 autocmd FileType javascript setlocal shiftwidth=2 expandtab
 autocmd FileType css setlocal shiftwidth=2 expandtab
 autocmd FileType scss setlocal shiftwidth=2 expandtab
+
+" vim-closetag
+let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx'
+let g:closetag_xhtml_filenames = '*.html,*.xhtml,*.js,*.jsx'
