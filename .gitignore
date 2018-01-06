@@ -2,3 +2,4 @@
 .config/nvim/.netrwhist
 .emacs.d/elpa
 .emacs.d/ido.last
+.emacs.d/url/
