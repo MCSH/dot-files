@@ -25,3 +25,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 export EDITOR=nvim
+
+alias emacs='emacsclient -n  -a ""'
+alias emacs-win='emacsclient -n -c -a ""'
