@@ -28,3 +28,4 @@ export EDITOR=nvim
 
 alias emacs='emacsclient -n  -a ""'
 alias emacs-win='emacsclient -n -c -a ""'
+alias em=emacs
