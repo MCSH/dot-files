@@ -94,4 +94,9 @@
 ;; Agenda file
 (setq org-agenda-files (list "~/TODO.org"))
 
+;; Powerline
+(add-to-list `load-path "~/.emacs.d/vendor/powerline")
+(require 'powerline)
+(powerline-default-theme)
+
 ;; EOF

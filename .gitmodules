@@ -1,3 +1,9 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = ./.oh-my-zsh
+[submodule ".emacs.d/vendor/emacs-powerline"]
+	path = .emacs.d/vendor/emacs-powerline
+	url = https://github.com/jonathanchu/emacs-powerline
+[submodule ".emacs.d/vendor/powerline"]
+	path = .emacs.d/vendor/powerline
+	url = https://github.com/milkypostman/powerline
