@@ -24,7 +24,13 @@
   )
 
 (use-package org
-  :ensure t)
+  :ensure t
+  :config
+  (define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map "\C-ca" 'org-agenda)
+  (define-key global-map "\C-cc" 'org-capture)
+  (define-key global-map "\C-cb" 'org-iswitchb)
+  )
 
 (use-package evil
   :ensure t
@@ -68,8 +74,24 @@
   (hl-todo-mode 1)
   )
 
-
 ;; Window
 (windmove-default-keybindings)
+
+;; Smooth scrolling
+(use-package smooth-scrolling
+  :ensure t
+  :config
+  (smooth-scrolling-mode 1)
+  (setq smooth-scroll-margin 3)
+  )
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
+;; Agenda file
+(setq org-agenda-files (list "~/TODO.org"))
 
 ;; EOF
