@@ -97,6 +97,9 @@
 ;; Powerline
 (add-to-list `load-path "~/.emacs.d/vendor/powerline")
 (require 'powerline)
-(powerline-default-theme)
+;(powerline-default-theme)
+
+(add-to-list `load-path "~/.emacs.d/MCSH")
+(require 'powerline-MCSH)
 
 ;; EOF
