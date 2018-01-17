@@ -102,7 +102,8 @@
 (add-to-list `load-path "~/.emacs.d/MCSH")
 (require 'powerline-MCSH)
 
-;; Define custom keys
-(define-key global-map "\C-ck" 'kill-this-bufer)
+;; Set custom file
+(setq custom-file "~/.emacs.d/.custom.el")
+(load custom-file)
 
 ;; EOF
