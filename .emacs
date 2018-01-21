@@ -26,6 +26,7 @@
 (use-package org
   :ensure t
   :config
+  (setq org-log-done t)
   (define-key global-map "\C-cl" 'org-store-link)
   (define-key global-map "\C-ca" 'org-agenda)
   (define-key global-map "\C-cc" 'org-capture)
@@ -108,5 +109,17 @@
 
 ;; Dashboard
 (require 'scratchify-MCSH)
+
+;; No tabs
+(setq-default indent-tabs-mode nil)
+
+;; YAML MODE
+(use-package yaml-mode
+  :ensure t)
+
+(require 'org-team)
+
+;; ESC
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
 ;; EOF

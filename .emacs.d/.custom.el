@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (dashboard use-package solarized-theme smooth-scrolling hl-todo evil))))
+    (yaml-mode dashboard use-package solarized-theme smooth-scrolling hl-todo evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

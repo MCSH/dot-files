@@ -1,3 +1,9 @@
+(defun reset-scratch ()
+  (interactive)
+  (switch-to-buffer "*scratch*")
+  (erase-buffer)
+  (insert initial-scratch-message))
+
 (defun set-scratch (&rest lines)
   (setq initial-scratch-message (apply 'concat lines)))
 
@@ -5,13 +11,7 @@
   (setq initial-scratch-message (apply 'concat initial-scratch-message lines)))
 
 (set-scratch
-  ";; -|-+-|- Invocation Failure.  Sorry. -|-+-|-" "\n"
   ";; You know what to do." "\n"
-  ";; \n"
-  ";; Emacs: " (number-to-string emacs-major-version) "." 
-      (number-to-string emacs-minor-version) 
-      " [" (when emacs-repository-version (number-to-string emacs-repository-version)) "]" 
-      "\n"
   ";; \n"
   ";;;;;;;;;;;;;;;;;;;;;;;;;;" "\n"
   ";;                      ;;" "\n"      
