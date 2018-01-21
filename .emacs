@@ -122,4 +122,19 @@
 ;; ESC
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 
+;; Ask "y" or "n" instead of "yes" or "no". Yes, laziness is great.
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Natural spliting
+(defun MCSH/split-right () "Split right, the rightway"
+       (interactive)
+       (split-window-right)
+       (other-window 1))
+(defun MCSH/split-below () "Split below, the rightway"
+       (interactive)
+       (split-window-below)
+       (other-window 1))
+(global-set-key (kbd "C-x C-3") 'MCSH/split-right)
+(global-set-key (kbd "C-x C-2") 'MCSH/split-below)
+
 ;; EOF
