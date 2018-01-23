@@ -17,11 +17,7 @@
 
 
 ;; My theme!
-(use-package solarized-theme
-  :ensure t
-  :config
-  (load-theme 'solarized-dark t)
-  )
+(load-theme 'misterioso)
 
 (use-package org
   :ensure t
