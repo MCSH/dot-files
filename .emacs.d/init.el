@@ -17,11 +17,7 @@
 
 
 ;; My theme!
-(use-package solarized-theme
-  :ensure t
-  :config
-  (load-theme 'solarized-dark t)
-  )
+(load-theme 'misterioso)
 
 (use-package org
   :ensure t
@@ -38,6 +34,44 @@
   :config
   (setcdr evil-insert-state-map nil)
   (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
+  
+;; Set up package list
+(require 'package)
+(add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+(setq package-enable-at-startup nil)
+(package-initialize)
+
+;; Set up use package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+
+;; My theme!
+(load-theme 'misterioso)
+
+(use-package org
+  :ensure t
+  :config
+  (setq org-log-done t)
+  (define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map "\C-ca" 'org-agenda)
+  (define-key global-map "\C-cc" 'org-capture)
+  (define-key global-map "\C-cb" 'org-iswitchb)
+  )
+
+(use-package evil
+  :ensure t
+  :config
+  (setcdr evil-insert-state-map nil)
+  (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
+  (setq evil-default-state 'insert)
+  (evil-mode)
   )
   
 
