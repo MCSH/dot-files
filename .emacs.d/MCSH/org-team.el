@@ -8,7 +8,7 @@
         ("MAYBE" . (:foreground "sea green"))
         ("DONE" . (:foreground "light sea green"))
         ("CANCELLED" . (:foreground "forest green"))
-        ("TASK" . (:foreground "blue"))))
+        ("TASK" . (:foreground "DeepSkyBlue"))))
 
 
 ;; TODO Complete this
