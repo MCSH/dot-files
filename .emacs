@@ -34,6 +34,7 @@
   :config
   (setcdr evil-insert-state-map nil)
   (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
+  )
   
 ;; Set up package list
 (require 'package)
