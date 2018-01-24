@@ -1,6 +1,6 @@
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
-        (sequence "TASK(f)" "|" "DONE(d)")
+      '((sequence "TODO(t)" "IN PROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")
+        (sequence "TASK(f)" "WAITING FOR REVIEW(r)" "|" "DONE(d)")
         (sequence "MAYBE(m)" "|" "CANCELLED(c)")))
 
 (setq org-todo-keyword-faces

@@ -68,9 +68,9 @@
 (use-package evil
   :ensure t
   :config
-  (setcdr evil-insert-state-map nil)
-  (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
-  (setq evil-default-state 'insert)
+  (define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
+  (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
+  (setq evil-default-state 'emacs)
   (evil-mode)
   )
   
