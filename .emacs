@@ -85,6 +85,18 @@
 (setq ido-enable-flex-matching t)
 (ido-mode 1)
 
+(use-package flx-ido
+   :ensure t
+   :init (setq ido-enable-flex-matching t
+               ido-use-faces nil)
+   :config (flx-ido-mode 1))
+
+(use-package smex
+  :ensure t
+  :init (smex-initialize)
+  :bind ("M-x" . smex)
+        ("M-X" . smex-major-mode-commands))
+x
 ;; No default backup
 (setq backup-inhibited nil
       make-backup-files nil
@@ -93,6 +105,7 @@
 
 ;; javascript mode
 (setq js-indent-level 2)
+(setenv "NODE_NO_READLINE" "1")
 
 ;; Auto pair
 (electric-pair-mode 1)
