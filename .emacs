@@ -96,7 +96,14 @@
   :init (smex-initialize)
   :bind ("M-x" . smex)
         ("M-X" . smex-major-mode-commands))
-x
+
+;; Helm
+(use-package helm
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c C-x") 'helm-M-x)
+  (global-set-key (kbd "C-c C-b") 'helm-buffers-list))
+
 ;; No default backup
 (setq backup-inhibited nil
       make-backup-files nil
