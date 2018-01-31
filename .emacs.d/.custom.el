@@ -40,7 +40,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil)))
+    (magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))

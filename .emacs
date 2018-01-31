@@ -192,4 +192,11 @@
 (global-set-key (kbd "C-x C-3") 'MCSH/split-right)
 (global-set-key (kbd "C-x C-2") 'MCSH/split-below)
 
+;; Line
+(linum-mode 1)
+
+;; git
+(use-package magit
+  :ensure t)
+
 ;; EOF
