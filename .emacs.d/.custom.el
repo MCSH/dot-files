@@ -38,6 +38,7 @@
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(org-agenda-files (quote ("~/src/SBU/apply/universities.org")))
  '(package-selected-packages
    (quote
     (magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil)))
