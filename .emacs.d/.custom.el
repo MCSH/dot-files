@@ -41,7 +41,7 @@
  '(org-agenda-files (quote ("~/src/SBU/apply/universities.org")))
  '(package-selected-packages
    (quote
-    (magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil)))
+    (helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))

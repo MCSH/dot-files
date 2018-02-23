@@ -1,4 +1,3 @@
-
 ;; Set up package list
 (require 'package)
 (add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
@@ -72,7 +71,7 @@
   (define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
   (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
   (setq evil-default-state 'emacs)
-  (evil-mode)
+;;  (evil-mode)
   )
   
 
@@ -95,13 +94,27 @@
   :ensure t
   :init (smex-initialize)
   :bind ("M-x" . smex)
-        ("M-X" . smex-major-mode-commands))
+  ("M-X" . smex-major-mode-commands))
+
+;; JSX
+(use-package rjsx-mode
+  :ensure t
+  :config
+  (defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
+  "Workaround sgml-mode and follow airbnb component style."
+  (save-excursion
+    (beginning-of-line)
+    (if (looking-at-p "^ +\/?> *$")
+        (delete-char sgml-basic-offset)))))
+
+(use-package js2-mode
+  :ensure t)
 
 ;; Helm
 (use-package helm
   :ensure t
   :config
-  (global-set-key (kbd "C-c C-x") 'helm-M-x)
+  (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-c C-b") 'helm-buffers-list))
 
 ;; No default backup
@@ -198,5 +211,14 @@
 ;; git
 (use-package magit
   :ensure t)
+
+;; escreen
+(use-package escreen
+  :ensure t
+  :config
+  (escreen-install)
+  (setq escreen-prefix-char "\C-\\")
+  (global-set-key escreen-prefix-char 'escreen-prefix)
+  )
 
 ;; EOF
