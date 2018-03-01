@@ -28,13 +28,6 @@
   (define-key global-map "\C-cb" 'org-iswitchb)
   )
 
-(use-package evil
-  :ensure t
-  :config
-  (setcdr evil-insert-state-map nil)
-  (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
-  )
-  
 ;; Set up package list
 (require 'package)
 (add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
@@ -69,9 +62,10 @@
   :ensure t
   :config
   (define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
-  (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
-  (setq evil-default-state 'emacs)
-;;  (evil-mode)
+  (setq evil-default-state 'normal)
+  (setcdr evil-insert-state-map nil)
+  (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
+  (evil-mode)
   )
   
 
