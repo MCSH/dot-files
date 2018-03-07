@@ -107,7 +107,7 @@
 (use-package hl-todo
   :ensure t
   :config
-  (hl-todo-mode 1)
+  (global-hl-todo-mode 1)
   )
 
 ;; Window
@@ -187,5 +187,8 @@
   (setq escreen-prefix-char "\C-\\")
   (global-set-key escreen-prefix-char 'escreen-prefix)
   )
+
+;; Linum mode
+(global-linum-mode)
 
 ;; EOF
