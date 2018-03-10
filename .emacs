@@ -177,7 +177,11 @@
 
 ;; git
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config
+  (use-package evil-magit
+    :ensure t)
+  )
 
 ;; escreen
 (use-package escreen
