@@ -15,6 +15,7 @@ source $ZSH/oh-my-zsh.sh
 # Variables
 export LANG=en_US.UTF-8
 export PATH=$PATH:~/bin/
+export PATH=$PATH:~/.gem/ruby/2.5.0/bin/
 
 # Aliases
 alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"
