@@ -7,3 +7,4 @@
 .emacs.d/smex-items
 .emacs.d/.#*
 .emacs.d/.emacs.desktop
+.emacs.d/eshell/history
