@@ -99,7 +99,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'ensime/ensime-vim', {'do': 'sudo pip2 install websocket-client sexpdata'} " TODO config???
 Plug 'vim-syntastic/syntastic'
 Plug 'xolox/vim-misc' " Req of vim-easytags
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-easytags'
 " TODO Plug 'terryma/vim-multiple-cursors' Doesn't work w/ my other plugins
 " TODO https://github.com/justinmk/vim-sneak
 Plug 'jiangmiao/auto-pairs'
@@ -217,14 +217,15 @@ autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <leader>t :EnType<CR>
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers=['eslint']
 
 " Vim-easytags
 
