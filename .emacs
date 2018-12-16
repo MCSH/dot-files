@@ -31,7 +31,7 @@
 (use-package evil
   :ensure t
   :config
-  (define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
+  ;;(define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
   (setcdr evil-insert-state-map nil)
   (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
   (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
@@ -194,5 +194,34 @@
 
 ;; Linum mode
 (global-linum-mode)
+
+;; Stop the bloody beep
+; (global-set-key (kbd "<mouse-6>") 'ignore)
+; (global-set-key (kbd "<mouse-7>") 'ignore)
+(setq ring-bell-function 'ignore)
+
+;; Neo Tree
+(use-package neotree
+  :ensure t)
+
+;; Vue
+(use-package vue-mode
+  :ensure t)
+(use-package vue-html-mode
+  :ensure t)
+
+;; Day and night
+
+(defun day () "Make it usefull in bright enviornment"
+       (interactive)
+       (load-theme 'tango))
+
+(defun night () "Take it back!!!"
+       (interactive)
+       (disable-theme 'tango))
+
+;; Haskell
+(use-package haskell-mode
+  :ensure t)
 
 ;; EOF
