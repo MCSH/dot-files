@@ -31,8 +31,8 @@ cdParentKey() {
 
 zle -N                 cdParentKey
 zle -N                 cdUndoKey
-bindkey '^[[1;3A'      cdParentKey
-bindkey '^[[1;3D'      cdUndoKey
+bindkey '^[[1;3A'      cdUndoKey
+bindkey '^[[1;3D'      cdParentKey
 
 # Variables
 export LANG=en_US.UTF-8
