@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# send notification and then play a bell sound.
+
+notify-send -u normal $@
+aplay /home/sajjad/bin/bell.wav >> /dev/null 2>&1
