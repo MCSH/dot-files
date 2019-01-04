@@ -104,6 +104,9 @@ Plug 'xolox/vim-misc' " Req of vim-easytags
 " TODO https://github.com/justinmk/vim-sneak
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 "" NERDTREE 
@@ -254,3 +257,18 @@ autocmd FileType scss setlocal shiftwidth=2 expandtab
 " vim-closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.js,*.jsx'
 let g:closetag_xhtml_filenames = '*.html,*.xhtml,*.js,*.jsx'
+
+
+"Snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+"let g:UltiSnipsSnippetDirectories=["UltiSnips", "~/.config/nvim/snips"]
+
+" Snippet config
+let g:UltiSnipsSnippetDir="/home/sajjad/.config/nvim/snips"
+let g:UltiSnipsSnippetDirectories=["/home/sajjad/.config/nvim/snips", "UltiSnips"]
