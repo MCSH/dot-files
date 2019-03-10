@@ -79,6 +79,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/unicode.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'Sudo npm install -g tern' }
+Plug 'zchee/deoplete-jedi'
 Plug 'ternjs/tern_for_vim'
 Plug 'alerque/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -107,6 +108,8 @@ Plug 'alvan/vim-closetag'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 call plug#end()
 
 "" NERDTREE 
@@ -154,6 +157,10 @@ let g:NERDSpaceDelims = 1
 
 " vim-windowswap 
 " Use Leader ww to yank window, Leader ww to swap it
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>mw :call WindowSwap#EasyWindowSwap()<CR>
 
 " sheerun/vim-polyglot
 " Awesome list of lots of language! see the page for more details
@@ -272,3 +279,16 @@ let g:UltiSnipsEditSplit="vertical"
 " Snippet config
 let g:UltiSnipsSnippetDir="/home/sajjad/.config/nvim/snips"
 let g:UltiSnipsSnippetDirectories=["/home/sajjad/.config/nvim/snips", "UltiSnips"]
+
+" vimwiki
+" user leader ww to start the wiki
+nnoremap <leader>wv :call vimwiki#base#follow_link('vsplit', 0, 1)<CR>
+nnoremap <leader>wh :call vimwiki#base#follow_link('hsplit', 0, 1)<CR>
+
+" Easier zt and zb
+nnoremap zt zt2<c-y>
+nnoremap zb zb2<c-e>
+
+" Fold
+set foldmethod=syntax
+set nofoldenable " Disable by default

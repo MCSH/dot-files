@@ -7,3 +7,19 @@ endsnippet
 snippet require "Node require"
 const ${1:name} = require('$1');
 endsnippet
+
+snippet react
+import React, {Component} from 'react';
+
+class ${1:name} extends Component{
+  render(){
+    return(
+      <div>
+        $1
+      </div>
+    );
+  }
+}
+
+export default $1;
+endsnippet
