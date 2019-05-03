@@ -233,4 +233,8 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+;; Rust
+(use-package rust-mode
+  :ensure t)
+
 ;; EOF
