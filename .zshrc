@@ -53,3 +53,5 @@ alias emacs='emacsclient -n  -a ""'
 alias emacs-win='emacsclient -n -c -a ""'
 alias em=emacs
 alias :q=exit
+
+export GEM_HOME=$HOME/.gem
