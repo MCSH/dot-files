@@ -110,6 +110,10 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+
+Plug 'sebastianmarkow/deoplete-rust'
+Plug 'luochen1990/rainbow'
 call plug#end()
 
 "" NERDTREE 
@@ -292,3 +296,32 @@ nnoremap zb zb2<c-e>
 " Fold
 set foldmethod=syntax
 set nofoldenable " Disable by default
+
+" Rust
+let g:deoplete#sources#rust#racer_binary='/home/sajjad/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/home/sajjad/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:deoplete#sources#rust#show_duplicates=1
+let g:deoplete#sources#rust#documentation_max_height=20
+
+" Rainbow
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+let g:rainbow_conf = {
+	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'red', 'lightyellow', 'DarkMagenta', 'lightcyan', 'darkblue', 'lightmagenta'],
+	\	'operators': '_,_',
+	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+	\	'separately': {
+	\		'*': {},
+	\		'tex': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+	\		},
+	\		'vim': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+	\		},
+	\		'html': {
+	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+	\		},
+	\		'css': 0,
+	\	}
+	\}
