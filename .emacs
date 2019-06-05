@@ -38,6 +38,9 @@
   (evil-mode)
   )
   
+;; Scaling fonts
+
+(set-face-attribute 'default nil :height 130)
 
 ;; Remove the useless stuff
 (scroll-bar-mode -1)
@@ -82,7 +85,11 @@
   :ensure t
   :config
   (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-c C-b") 'helm-buffers-list))
+  (global-set-key (kbd "C-c C-b") 'helm-buffers-list)
+  ;(setq helm-display-function 'helm-display-buffer-in-own-frame
+  ;      helm-display-buffer-reuse-frame t
+  ;      helm-use-undecorated-frame-option t)
+  )
 
 ;; No default backup
 (setq backup-inhibited nil

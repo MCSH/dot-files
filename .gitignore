@@ -9,3 +9,4 @@
 .emacs.d/.emacs.desktop
 .emacs.d/eshell/history
 .emacs.d/games/snake-scores
+.emacs.d/transient
