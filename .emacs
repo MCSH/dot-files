@@ -209,7 +209,18 @@
 
 ;; Neo Tree
 (use-package neotree
-  :ensure t)
+  :ensure t
+  :config
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+  (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-refresh)
+  (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle))
 
 ;; Vue
 (use-package vue-mode
@@ -243,5 +254,21 @@
 ;; Rust
 (use-package rust-mode
   :ensure t)
+
+;; yasnippet
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :ensure t)
+
+;; No kill please
+(defun no-kill (orig-kill &rest args)
+  (if (y-or-n-p "Are you sure you want to kill?")
+      (apply orig-kill args)
+      (message "hooff")))
+(advice-add 'kill-emacs :around #'no-kill)
 
 ;; EOF

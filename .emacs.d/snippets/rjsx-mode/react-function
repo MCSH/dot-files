@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: react-function
+# key: react
+# --
+import React from 'react';
+
+function ${1:fn}(){
+  return (
+    <div>
+      $2
+    </div>
+  );
+}
+
+export default $1;
