@@ -190,15 +190,6 @@
     :ensure t)
   )
 
-;; escreen
-(use-package escreen
-  :ensure t
-  :config
-  (escreen-install)
-  (setq escreen-prefix-char "\C-\\")
-  (global-set-key escreen-prefix-char 'escreen-prefix)
-  )
-
 ;; Linum mode
 (global-linum-mode)
 
@@ -270,5 +261,23 @@
       (apply orig-kill args)
       (message "hooff")))
 (advice-add 'kill-emacs :around #'no-kill)
+
+;; Projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
+
+(use-package company-tern
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-tern))
+
 
 ;; EOF
