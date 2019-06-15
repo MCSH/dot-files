@@ -2,18 +2,6 @@
 
 (require 'tg-secret) ;; Provide tg-token and tg-user inside
 
-(defun tg-parsedict (args)
-  "Return a list of args"
-  (if (null args)
-      nil
-    (cons
-     (format "%s=%s" (caar args) (cdar args))
-     (tg-parsedict (cdr args)))))
-
-(defun tg-parseargs (args)
-  "Return a string of args"
-  (string-join (tg-parsedict args) "&" ))
-
 (cl-defun tg-call (func args &key (file nil))
   "Call the func with args"
   (let ((f (format "%s" func)) (a (tg-parseargs args)))
