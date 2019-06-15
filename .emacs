@@ -286,4 +286,11 @@
 (use-package 2048-game
   :ensure t)
 
+;; telegram 
+
+(use-package request
+  :ensure t)
+
+(require 'tg)
+
 ;; EOF
