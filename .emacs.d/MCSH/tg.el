@@ -30,7 +30,12 @@
 (cl-defun tg-send (msg &rest settings
                     &key (user tg-user))
   "Send a message to user"
-  (tg-call "sendMessage" `((chat_id . ,user) (text . ,msg)))
+  (if (>= (length msg) 4000)
+      (progn
+        (apply #'tg-send (substring msg 0 3999) :user user settings)
+        (apply #'tg-send (substring msg 3999) :user user settings)
+        nil)
+    (tg-call "sendMessage" `((chat_id . ,user) (text . ,msg))))
   nil)
 
 (defun tg-copy ()
@@ -44,7 +49,7 @@
 (defun tg-upload ()
   "Send the whole file to telegram"
   (interactive)
-  (tg-send (current-buffer))
+  (tg-send (buffer-name))
   (tg-send (buffer-substring 1 (point-max)))
   nil)
 
