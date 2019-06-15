@@ -4,19 +4,18 @@
 
 (cl-defun tg-call (func args &key (file nil))
   "Call the func with args"
-  (let ((f (format "%s" func)) (a (tg-parseargs args)))
-    (request
-     (concat "https://api.telegram.org/bot" tg-token "/" f)
-     :params args
-     :parser 'json-read
-     :complete (lambda (&rest _) (message "Finished!"))
-     :error
-     (cl-function (lambda (&key error-thrown &allow-other-keys&rest _)
-                    (message "Got error: %S" error-thrown)))
-     )))
+  (request
+   (concat "https://api.telegram.org/bot" tg-token "/" (format "%s" func))
+   :params args
+   :parser 'json-read
+   :complete (lambda (&rest _) (message "Finished!"))
+   :error
+   (cl-function (lambda (&key error-thrown &allow-other-keys&rest _)
+                  (message "Got error: %S" error-thrown)))
+   ))
 
 (cl-defun tg-send (msg &rest settings
-                    &key (user tg-user))
+                       &key (user tg-user))
   "Send a message to user"
   (if (>= (length msg) 4000)
       (progn
