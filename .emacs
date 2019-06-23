@@ -284,7 +284,11 @@
 ;; 2048
 
 (use-package 2048-game
-  :ensure t)
+  :ensure t
+  :config (defun 2048-g()
+            (interactive)
+            (2048-game)
+            (evil-insert-state)))
 
 ;; telegram 
 
