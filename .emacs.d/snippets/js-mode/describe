@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: describe
+# key:  describe
+# --
+
+describe('${1:Test}', function(){
+  $2
+});

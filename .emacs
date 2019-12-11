@@ -75,6 +75,7 @@
         (delete-char sgml-basic-offset))))
   (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
   (add-to-list 'auto-mode-alist '("containers\\/.*\\.js\\'" . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("src\\/.*\\.js\\'" . rjsx-mode))
   )
 
 (use-package js2-mode
@@ -267,6 +268,7 @@
   :ensure t
   :config
   (projectile-mode +1)
+  (setq projectile-globally-ignored-directories (append '("node_modules") projectile-globally-ignored-directories))
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 ;; Company
@@ -296,5 +298,68 @@
   :ensure t)
 
 (require 'tg)
+
+;; Flutter
+(use-package dart-mode
+  :ensure t
+  :custom
+  (dart-format-on-save t))
+
+(use-package flutter
+  :after dart-mode
+  :ensure t
+  :bind (:map dart-mode-map
+              ("C-M-x" . #'flutter-run-or-hot-reload)))
+
+;; GO
+(use-package go-mode
+  :ensure t
+  :config 
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (setq tab-width 4)
+              (setq indent-tabs-mode nil))))
+
+(use-package go-autocomplete
+  :ensure t
+  :config
+  (defun auto-complete-for-go ()
+    (auto-complete-mode 1))
+  (add-hook 'go-mode-hook 'auto-complete-for-go))
+
+;; LSP
+(use-package lsp-mode
+  :ensure t
+  :hook (go-mode . lsp)
+  :hook (python-mode . lsp)
+  :hook (c++-mode . lsp)
+  :commands lsp)
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
+
+(use-package helm-lsp
+  :ensure t
+  :commands helm-lsp-workspace-symbol)
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  :config
+  (lsp-enable-imenu)
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+(use-package lsp-treemacs
+  :ensure t
+  :commands lsp-treemacs-errors-list)
+
+(use-package flycheck
+  :ensure t
+  :config (global-flycheck-mode))
+
+;; Rumi
+(require 'rumi)
 
 ;; EOF

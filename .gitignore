@@ -14,3 +14,5 @@
 /.emacs.d/projectile.cache
 .emacs.d/MCSH/tg-secret.el
 .emacs.d/request/
+.emacs.d/.lsp-session-v1
+.emacs.d/vimish-fold
