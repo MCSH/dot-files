@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export DFHACK_PORT=4999
+
+/home/sajjad/App/DwarfFortress/df_linux/dfhack
