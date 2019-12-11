@@ -6,7 +6,7 @@ ZSH_THEME="eastwood"
 # Custom, custom folder
 ZSH_CUSTOM=/home/sajjad/src/git/dot-files/zsh-custom/
 
-plugins=(git jump history-substring-search)
+plugins=(git jump flutter go history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -55,3 +55,10 @@ alias em=emacs
 alias :q=exit
 
 export GEM_HOME=$HOME/.gem
+
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+export PATH=$PATH:/home/sajjad/App/mendeleyBibFix
+export PATH=$PATH:/home/sajjad/.dotnet/tools
+alias adb=/opt/android-sdk/platform-tools/adb
