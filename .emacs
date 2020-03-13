@@ -18,6 +18,24 @@
 ;; My theme!
 (load-theme 'misterioso)
 
+;; Day and night
+
+(defun day () "Make it usefull in bright enviornment"
+       (interactive)
+       (load-theme 'leuven))
+
+(defun afternoon () "Just a darkish theme"
+       (interactive)
+       (load-theme 'tango-dark))
+
+(defun night () "Take it back!!!"
+       (interactive)
+       (load-theme 'misterioso))
+
+(defun latenight () "Just a really dark theem"
+       (interactive)
+       (load-theme 'deeper-blue))
+
 (use-package org
   :ensure t
   :config
@@ -189,6 +207,8 @@
   :config
   (use-package evil-magit
     :ensure t)
+  (define-key global-map (kbd "C-c C-g") 'magit)
+  (define-key global-map (kbd "C-c g") 'magit)
   )
 
 ;; Linum mode
@@ -220,19 +240,15 @@
 (use-package vue-html-mode
   :ensure t)
 
-;; Day and night
-
-(defun day () "Make it usefull in bright enviornment"
-       (interactive)
-       (load-theme 'tango))
-
-(defun night () "Take it back!!!"
-       (interactive)
-       (disable-theme 'tango))
-
 ;; Haskell
 (use-package haskell-mode
   :ensure t)
+
+(use-package lsp-haskell
+  :ensure t
+  :config
+  :hook (haskell-mode . lsp)
+  )
 
 ;; Markdown
 (use-package markdown-mode
@@ -245,7 +261,11 @@
 
 ;; Rust
 (use-package rust-mode
-  :ensure t)
+  :ensure t
+  :config
+  ;; (add-to-list 'auto-mode-alist '(".rs" . rust-mode))
+  )
+
 
 ;; yasnippet
 (use-package yasnippet
@@ -260,7 +280,7 @@
 (defun no-kill (orig-kill &rest args)
   (if (y-or-n-p "Are you sure you want to kill?")
       (apply orig-kill args)
-      (message "hooff")))
+      ))
 (advice-add 'kill-emacs :around #'no-kill)
 
 ;; Projectile
@@ -269,6 +289,8 @@
   :config
   (projectile-mode +1)
   (setq projectile-globally-ignored-directories (append '("node_modules") projectile-globally-ignored-directories))
+  (define-key projectile-mode-map (kbd "C-c C-f") 'projectile-find-file)
+  (define-key projectile-mode-map (kbd "C-c f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 ;; Company
@@ -334,7 +356,25 @@
   :hook (go-mode . lsp)
   :hook (python-mode . lsp)
   :hook (c++-mode . lsp)
-  :commands lsp)
+  :hook (c-mode . lsp)
+  :hook (dart-mode . lsp)
+  :commands lsp
+  :config
+  (evil-define-key 'normal lsp-mode-map (kbd "g d") 'lsp-find-declaration)
+  (setq lsp-dart-sdk-dir "/opt/flutter/bin/cache/dart-sdk")
+  )
+
+(use-package golden-ratio
+  :ensure t
+  :config
+  (golden-ratio-mode 1))
+
+(defun max-lv-size-func ()
+  "Ensure lv is not larger than a size"
+  (message "hoof")
+  )
+
+(add-hook 'lv-window-hook 'max-lv-size-func)
 
 (use-package company-lsp
   :ensure t
@@ -362,4 +402,30 @@
 ;; Rumi
 (require 'rumi)
 
+;; Bison and Lex
+(use-package bison-mode
+  :ensure t
+  :config
+  (setq bison-all-electricity-off t)
+  (defun bison-indent-new-line () "I don't want this defined")
+  (setq bison-mode-map (make-sparse-keymap))
+  (define-key bison-mode-map [tab] nil))
+
+;; Makefile
+(define-key global-map "\C-cm" 'compile)
+
+;; ASM
+
+;; (add-to-list 'auto-mode-alist '(".ll" . asm-mode))
+
+;; CMAKE
+(use-package cmake-mode
+  :ensure t)
+
+;; Load current buffers if available
+(desktop-save-mode 1)
+
+;; farsi
+
+(define-key global-map "\C-س" 'save-buffer)
 ;; EOF

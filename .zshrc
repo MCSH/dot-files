@@ -62,3 +62,10 @@ fi
 export PATH=$PATH:/home/sajjad/App/mendeleyBibFix
 export PATH=$PATH:/home/sajjad/.dotnet/tools
 alias adb=/opt/android-sdk/platform-tools/adb
+alias emulator=/opt/android-sdk/emulator/emulator
+export PATH=$PATH:/opt/flutter/bin/cache/dart-sdk/bin
+
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true

@@ -3,7 +3,7 @@
         (sequence "TASK(f)" "WAITING FOR REVIEW(r)" "|" "DONE(d)")
         (sequence "MAYBE(m)" "|" "CANCELLED(c)")))
 
-(setq org-todo-keyword-faces
+ (setq org-todo-keyword-faces
       '(("TODO" . (:foreground "DarkSlateGray1" :weight bold))
         ("MAYBE" . (:foreground "sea green"))
         ("DONE" . (:foreground "light sea green"))
