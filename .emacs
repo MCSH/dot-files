@@ -397,7 +397,15 @@
 
 (use-package flycheck
   :ensure t
-  :config (global-flycheck-mode))
+  :config (global-flycheck-mode)
+  )
+
+(use-package flycheck-rust
+  :ensure t
+  :config
+  (with-eval-after-load 'rust-mode
+    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  )
 
 ;; Rumi
 (require 'rumi)

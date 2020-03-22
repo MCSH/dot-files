@@ -69,3 +69,7 @@ export PATH=$PATH:/opt/flutter/bin/cache/dart-sdk/bin
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+
+export RUMI_PATH=~/.local/share/rumi/
+export PATH=$PATH:~/.local/share/rumi/bin/
