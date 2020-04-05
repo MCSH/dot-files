@@ -436,4 +436,19 @@
 ;; farsi
 
 (define-key global-map "\C-س" 'save-buffer)
+
+;; lua
+
+(use-package lua-mode
+  :ensure t)
+
+;;
+(use-package org-journal
+  :ensure t
+  :custom
+  (org-journal-dir "~/writing/journal/")
+  (org-journal-file-format "%Y-%m-%d")
+  (org-journal-date-format "%e %b %Y (%A)")
+  )
+
 ;; EOF

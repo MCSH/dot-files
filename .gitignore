@@ -16,3 +16,4 @@
 .emacs.d/request/
 .emacs.d/.lsp-session-v1
 .emacs.d/vimish-fold
+/.emacs.d/org-journal.cache
