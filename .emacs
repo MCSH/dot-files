@@ -154,7 +154,7 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 ;; Agenda file
-(setq org-agenda-files (list "~/TODO.org"))
+(setq org-agenda-files (list "~/TODO.org" "~/src/personal/schedule.org"))
 
 ;; Powerline
 (add-to-list `load-path "~/.emacs.d/vendor/powerline")
@@ -449,6 +449,16 @@
   (org-journal-dir "~/writing/journal/")
   (org-journal-file-format "%Y-%m-%d")
   (org-journal-date-format "%e %b %Y (%A)")
+  )
+
+(use-package org-pomodoro
+  :ensure t)
+
+;; config in MCSH/gcal-secret.el
+(use-package org-gcal
+  :ensure t
+  :config
+  (require 'gcal-secret)
   )
 
 ;; EOF

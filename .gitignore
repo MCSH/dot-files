@@ -17,3 +17,6 @@
 .emacs.d/.lsp-session-v1
 .emacs.d/vimish-fold
 /.emacs.d/org-journal.cache
+/.emacs.d/MCSH/gcal-secret.el
+/.emacs.d/.org-id-locations
+/.emacs.d/org-gcal/
