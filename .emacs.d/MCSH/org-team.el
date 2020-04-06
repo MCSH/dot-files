@@ -1,6 +1,6 @@
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "IN PROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")
-        (sequence "TASK(f)" "WAITING FOR REVIEW(r)" "|" "DONE(d)")
+      '((sequence "TODO(t)" "IN PROGRESS(i)" "WAIT(r)" "|" "DONE(d)" "CANCELLED(c)")
+        ;;(sequence "TASK(f)" "WAIT(r)" "|" "DONE(d)")
         (sequence "MAYBE(m)" "|" "CANCELLED(c)")))
 
  (setq org-todo-keyword-faces
@@ -9,6 +9,13 @@
         ("DONE" . (:foreground "light sea green"))
         ("CANCELLED" . (:foreground "forest green"))
         ("TASK" . (:foreground "DeepSkyBlue"))))
+
+(setq org-agenda-custom-commands
+      '(("r" "School work" tags-todo "school" )
+        ("h" "Hobby" tags-todo "hobby")
+        ("n" "All" ((agenda "" ((org-agenda-span 7)))
+                    (todo "")))
+        ))
 
 
 ;; TODO Complete this

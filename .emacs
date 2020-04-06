@@ -433,10 +433,6 @@
 ;; Load current buffers if available
 (desktop-save-mode 1)
 
-;; farsi
-
-(define-key global-map "\C-س" 'save-buffer)
-
 ;; lua
 
 (use-package lua-mode
@@ -452,13 +448,8 @@
   )
 
 (use-package org-pomodoro
-  :ensure t)
-
-;; config in MCSH/gcal-secret.el
-(use-package org-gcal
   :ensure t
-  :config
-  (require 'gcal-secret)
-  )
+  :custom
+  (org-pomodoro-keep-killed-pomodoro-time t))
 
 ;; EOF
