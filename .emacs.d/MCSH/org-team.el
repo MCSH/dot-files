@@ -18,9 +18,10 @@
           (tags-todo "personal"))
          ((org-agenda-tag-filter-preset '("+personal"))))
         ("n" "All"
-         ((agenda "" ((org-agenda-hide-tags-regexp "personal")(org-agenda-span 7)))
-          (tags "-personal")))
-        ("m" "All w\ Personal"
+         ((agenda "" ((org-agenda-span 7)))
+          (tags "-personal"))
+         ((org-agenda-tag-filter-preset '("-personal"))))
+        ("m" "All w\\ Personal"
          ((agenda "" ((org-agenda-span 7)))
           (todo)))
         ))
