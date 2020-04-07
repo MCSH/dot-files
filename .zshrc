@@ -6,7 +6,7 @@ ZSH_THEME="eastwood"
 # Custom, custom folder
 ZSH_CUSTOM=/home/sajjad/src/git/dot-files/zsh-custom/
 
-plugins=(git jump flutter go history-substring-search)
+plugins=(git jump flutter cargo go history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -73,3 +73,6 @@ export PATH=$PATH:/opt/flutter/bin/cache/dart-sdk/bin
 
 export RUMI_PATH=~/.local/share/rumi/
 export PATH=$PATH:~/.local/share/rumi/bin/
+
+# Issue with cargo completion
+compinit

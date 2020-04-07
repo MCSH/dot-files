@@ -10,6 +10,16 @@
         ("CANCELLED" . (:foreground "forest green"))
         ("TASK" . (:foreground "DeepSkyBlue"))))
 
+(setq org-tag-faces
+      '(
+        ("writing" . (:foreground "dark orange"))
+        ("school" . (:foreground "gray"))
+        ("personal" . (:foreground "sienna"))
+        ("reading" . (:foreground "deep sky blue"))
+        ("research" . (:foreground "goldenrod1"))
+        ("hobby" . (:foreground "forest green"))
+        ))
+
 (setq org-agenda-custom-commands
       '(("r" "School work" tags-todo "school" )
         ("h" "Hobby" tags-todo "hobby")
