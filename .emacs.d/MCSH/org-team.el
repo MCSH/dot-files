@@ -18,6 +18,7 @@
         ("reading" . (:foreground "deep sky blue"))
         ("research" . (:foreground "goldenrod1"))
         ("hobby" . (:foreground "forest green"))
+        ("idea" . (:foreground "magenta"))
         ))
 
 (setq org-agenda-custom-commands
@@ -29,11 +30,18 @@
          ((org-agenda-tag-filter-preset '("+personal"))))
         ("n" "All"
          ((agenda "" ((org-agenda-span 7)))
-          (tags "-personal"))
+          (tags-todo "-personal"))
          ((org-agenda-tag-filter-preset '("-personal"))))
         ("m" "All w\\ Personal"
          ((agenda "" ((org-agenda-span 7)))
           (todo)))
+        ("u" "Unscheduled"
+         ((todo ""
+                ((org-agenda-overriding-header "\nUnscheduled TODO")
+                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp)))))
+         nil
+         nil
+         )
         ))
 
 ;; TODO Complete this
