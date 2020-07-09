@@ -6,7 +6,7 @@ ZSH_THEME="eastwood"
 # Custom, custom folder
 ZSH_CUSTOM=/home/sajjad/src/git/dot-files/zsh-custom/
 
-plugins=(git jump flutter cargo go history-substring-search)
+plugins=(git jump flutter cargo go stack yarn history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 

@@ -35,6 +35,11 @@
         ("m" "All w\\ Personal"
          ((agenda "" ((org-agenda-span 7)))
           (todo)))
+        ("b" "All w\\ Personal w\\ unscheduled"
+         ((agenda "" ((org-agenda-span 7)))
+          (todo ""
+                ((org-agenda-overriding-header "\nUnscheduled TODO")
+                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp))))))
         ("u" "Unscheduled"
          ((todo ""
                 ((org-agenda-overriding-header "\nUnscheduled TODO")
@@ -43,6 +48,17 @@
          nil
          )
         ))
+
+(setq org-default-notes-file "~/src/TODO.org")
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/src/TODO.org" "Tasks")
+         "* TODO %?  %^G\n  %i\n  %a")
+        ("c" "clipboard" entry (file+headline "~/src/TODO.org" "Tasks")
+         "* TODO %?  %^G\n %x\n")
+      ))
+
+(setq org-default-priority 67)
 
 ;; TODO Complete this
 

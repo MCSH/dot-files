@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: react import component
+# key: component
+# --
+import ${1:Button} from 'app/components/$1';

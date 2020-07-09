@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: react_import_container
+# key: container
+# --
+import ${1:Button} from 'app/containers/$1';

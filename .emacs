@@ -44,6 +44,11 @@
   (define-key global-map "\C-ca" 'org-agenda)
   (define-key global-map "\C-cc" 'org-capture)
   (define-key global-map "\C-cb" 'org-iswitchb)
+  ;; Agenda file
+  (setq org-agenda-files (list "~/src/TODO.org" "~/src/personal/schedule.org"))
+  (setq org-agenda-start-on-weekday nil)
+  (setq org-agenda-start-day "-1d")
+  (add-to-list 'org-modules 'org-habit t)
   )
 
 (use-package evil
@@ -53,8 +58,20 @@
   (setcdr evil-insert-state-map nil)
   (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
   (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
+  (define-key evil-normal-state-map (kbd "<f3>") 'neotree-toggle)
   (evil-mode)
   )
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+              (evil-org-set-key-theme)))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
   
 ;; Scaling fonts
 
@@ -152,9 +169,6 @@
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
-;; Agenda file
-(setq org-agenda-files (list "~/TODO.org" "~/src/personal/schedule.org"))
 
 ;; Powerline
 (add-to-list `load-path "~/.emacs.d/vendor/powerline")
@@ -262,6 +276,7 @@
 ;; Rust
 (use-package rust-mode
   :ensure t
+  :hook (rust-mode . lsp)
   :config
   ;; (add-to-list 'auto-mode-alist '(".rs" . rust-mode))
   )
@@ -367,7 +382,14 @@
 (use-package golden-ratio
   :ensure t
   :config
-  (golden-ratio-mode 1))
+  (golden-ratio-mode 1)
+
+(defun fix-ratio (orig &rest args)
+      (apply orig args)
+      (golden-ratio)
+      )
+  (advice-add 'evil-window-next :around 'fix-ratio)
+  )
 
 (defun max-lv-size-func ()
   "Ensure lv is not larger than a size"
@@ -451,5 +473,50 @@
   :ensure t
   :custom
   (org-pomodoro-keep-killed-pomodoro-time t))
+
+(use-package glsl-mode
+  :ensure t)
+
+;; TS
+(use-package typescript-mode
+  :ensure t)
+
+(use-package tss
+  :ensure t)
+
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
+
+;; TSX
+(use-package web-mode
+              :ensure t)
+
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; enable typescript-tslint checker
+(flycheck-add-mode 'typescript-tslint 'web-mode)
+
+(setq typescript-indent-level 2)
 
 ;; EOF
