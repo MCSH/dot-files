@@ -1,0 +1,7 @@
+configuration {
+ modi: "combi,window,drun,ssh,calc";
+ theme: "fancy";
+ font: "hack 10";
+ combi-modi: "window,drun,ssh";
+ ssh-command: "{terminal} -- {ssh-client} {host}";
+}

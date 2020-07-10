@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILES=".zshrc .oh-my-zsh .config/i3 .config/nvim bin .emacs .emacs.d"
+FILES=".zshrc .oh-my-zsh .config/rofi .config/i3 .config/nvim bin .emacs .emacs.d"
 
 DEST=$1
 
