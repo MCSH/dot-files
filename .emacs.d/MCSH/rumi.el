@@ -51,7 +51,7 @@
 (define-generic-mode
     'rumi-mode
   '("//" ("/*" . "*/")) ;; Comments
-  '("if" "while" "interface" "struct" "return" "else" "void" "int" "u8" "u16" "u32" "u64" "s8" "s16" "s32" "s64" "void" "string" "import") ;; some keywords
+  '("if" "while" "interface" "struct" "return" "else" "void" "int" "u8" "u16" "u32" "u64" "s8" "s16" "s32" "s64" "void" "string" "import" "self" "instanceof" "sizeof") ;; some keywords
   '(
     ("=" . 'font-lock-operator-face) ;; '=' is an operator
     (";" . 'font-lock-builtin-face) ;; ';' is builtin

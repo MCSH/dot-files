@@ -60,6 +60,19 @@
 
 (setq org-default-priority 67)
 
+(defun org-habit-toggle-everyday ()
+  "Toggle displaying habits for today only vs. everyday"
+  (interactive)
+  (setq org-habit-show-habits-only-for-today (if org-habit-show-habits-only-for-today nil t))
+  )
+
+
+(setq org-agenda-sorting-strategy
+      '((agenda time-up habit-down priority-down category-keep)
+        (todo priority-down category-keep)
+        (tags priority-down category-keep)
+        (search category-keep)))
+
 ;; TODO Complete this
 
 (provide 'org-team)
