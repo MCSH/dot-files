@@ -76,3 +76,6 @@ export PATH=$PATH:~/.local/share/rumi/bin/
 
 # Issue with cargo completion
 compinit
+
+# direnv
+eval "$(direnv hook zsh)"
