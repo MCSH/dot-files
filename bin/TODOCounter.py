@@ -13,14 +13,19 @@ def count(file):
 
 def counter(file, interval):
     c = 0
+    constant = 0
     while True:
         n = count(file)
         if c < n:
             print('\033[91m', n, '\033[0m')
+            constant = 0
         elif c == n:
-            print('\033[0m', n, '\033[0m')
+            constant += 1
+            if constant == 10:
+               print('\033[0m', n, '\033[0m')
         else:
             print('\033[92m', n, '\033[0m')
+            constant = 0
         c = n
         sleep(interval)
 
