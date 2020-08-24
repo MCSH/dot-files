@@ -21,6 +21,14 @@
         ("idea" . (:foreground "magenta"))
         ))
 
+(defun my-org-agenda-skip-blocked ()
+  "Skip blocked entries."
+  (let ((heading-end (save-excursion (outline-next-heading))))
+    (if (org-entry-blocked-p)
+        heading-end
+        (org-agenda-skip-entry-if 'timestamp)
+        )))
+
 (setq org-agenda-custom-commands
       '(("r" "School work" tags-todo "school" )
         ("h" "Hobby" tags-todo "hobby")
@@ -28,9 +36,10 @@
          ((agenda "" ((org-agenda-span 7)))
           (tags-todo "personal"))
          ((org-agenda-tag-filter-preset '("+personal"))))
+        ("j" "journal papers" tags-todo "papers")
         ("n" "All"
          ((agenda "" ((org-agenda-span 7)))
-          (tags-todo "-personal"))
+          (tags-todo "-personal-hobby"))
          ((org-agenda-tag-filter-preset '("-personal"))))
         ("m" "All w\\ Personal"
          ((agenda "" ((org-agenda-span 7)))
@@ -39,11 +48,13 @@
          ((agenda "" ((org-agenda-span 7)))
           (todo ""
                 ((org-agenda-overriding-header "\nUnscheduled TODO")
-                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp))))))
+                 (org-agenda-skip-function (function my-org-agenda-skip-blocked))
+                 ))))
         ("u" "Unscheduled"
          ((todo ""
                 ((org-agenda-overriding-header "\nUnscheduled TODO")
-                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp)))))
+                 (org-agenda-skip-function (function my-org-agenda-skip-blocked))
+                 )))
          nil
          nil
          )
@@ -72,6 +83,8 @@
         (todo priority-down category-keep)
         (tags priority-down category-keep)
         (search category-keep)))
+
+(setq org-habit-graph-column 60)
 
 ;; TODO Complete this
 

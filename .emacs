@@ -1,7 +1,7 @@
 ;; Set up package list
 (require 'package)
 (add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -184,6 +184,9 @@
 
 ;; Dashboard
 (require 'scratchify-MCSH)
+
+;; SAM
+(require 'sam)
 
 ;; No tabs
 (setq-default indent-tabs-mode nil)
@@ -474,6 +477,12 @@
   :custom
   (org-pomodoro-keep-killed-pomodoro-time t))
 
+(use-package org-edna
+  :ensure t
+  :config
+  (org-edna-mode)
+  )
+
 (use-package glsl-mode
   :ensure t)
 
@@ -518,5 +527,23 @@
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
 (setq typescript-indent-level 2)
+
+;; EPresent
+(use-package epresent
+  :ensure t
+  :config
+  (add-hook 'epresent-start-presentation-hook (lambda () (evil-insert-state)))
+  )
+
+;; SLIME
+(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+;; Replace "sbcl" with the path to your implementation
+(setq inferior-lisp-program "clisp")
+
+(global-set-key (kbd "C-c C-e") 'slime-eval-last-expression-in-repl)
+
+;; C#
+(use-package csharp-mode
+  :ensure t)
 
 ;; EOF

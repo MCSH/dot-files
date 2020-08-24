@@ -7,55 +7,54 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- '(compilation-message-face (quote default))
+ '(compilation-message-face 'default)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
-   (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" default)))
+   '("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" default))
  '(dart-format-on-save t t)
- '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(golden-ratio-mode t)
+ '(highlight-changes-colors '("#d33682" "#6c71c4"))
  '(highlight-symbol-colors
    (--map
     (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+    '("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2")))
  '(highlight-symbol-foreground-color "#93a1a1")
  '(highlight-tail-colors
-   (quote
-    (("#073642" . 0)
+   '(("#073642" . 0)
      ("#546E00" . 20)
      ("#00736F" . 30)
      ("#00629D" . 50)
      ("#7B6000" . 60)
      ("#8B2C02" . 70)
      ("#93115C" . 85)
-     ("#073642" . 100))))
+     ("#073642" . 100)))
  '(hl-bg-colors
-   (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+   '("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00"))
  '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+   '("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36"))
  '(lsp-haskell-process-path-hie "hie-8.6.5")
  '(magit-diff-use-overlays nil)
+ '(midnight-mode t)
  '(nrepl-message-colors
-   (quote
-    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+   '("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4"))
+ '(org-journal-date-format "%e %b %Y (%A)")
+ '(org-journal-dir "~/writing/journal/")
+ '(org-journal-file-format "%Y-%m-%d")
+ '(org-pomodoro-keep-killed-pomodoro-time t)
  '(package-selected-packages
-   (quote
-    (web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil)))
+   '(csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
+ '(send-mail-function 'smtpmail-send-it)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(vc-annotate-background-mode nil)
  '(weechat-color-list
-   (quote
-    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+   '(unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83"))
  '(xterm-color-names
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
  '(xterm-color-names-bright

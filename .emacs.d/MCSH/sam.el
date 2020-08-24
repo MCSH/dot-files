@@ -18,20 +18,41 @@
   (make-sam-variables)
   (turn-on-auto-fill)
   ;; (sam-type whatever) TODO was lazy
-  (inseert "\n")
+  (insert "Welcome to sam:\n")
+  )
+
+(defun sam ()
+  (interactive)
+  (switch-to-buffer "*SAM*")
+  (sam-mode)
   )
 
 (defun make-sam-variables  ()
   ;; TODO was lazy
   )
 
-(defun doctor-read-print ()
-  "Top level loop."
+(defun sam-ret-or-read ()
   (interactive)
-  (setq sam-sent (sam-readin))
+  (setq SAM/last_line 
+        (buffer-substring (line-beginning-position) (line-end-position)))
   (insert "\n")
-  (setq sam--lincount (+1 sam-lincount))
-  (sam-doc)
-  (insert "\n")
-  ;; TODO was lazy
+  (sam-talk)
   )
+
+(defun sam-think (inp)
+    (insert "\n")
+    (insert "SAM: ")
+    (insert SAM/last_line)
+    (insert "\n")
+    (insert "\n")
+  )
+
+(defun sam-talk ()
+  (interactive)
+  (cond
+   ((string-equal SAM/last_line "") 0)
+   (t
+    (sam-think SAM/last_line)
+   )))
+
+(provide 'sam)
