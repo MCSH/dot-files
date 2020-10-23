@@ -40,12 +40,13 @@
  '(midnight-mode t)
  '(nrepl-message-colors
    '("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4"))
+ '(org-agenda-files '("~/src/TODO.org" "~/src/personal/schedule.org"))
  '(org-journal-date-format "%e %b %Y (%A)")
  '(org-journal-dir "~/writing/journal/")
  '(org-journal-file-format "%Y-%m-%d")
  '(org-pomodoro-keep-killed-pomodoro-time t)
  '(package-selected-packages
-   '(csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
+   '(org-roam lsp-dart protobuf-mode csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(send-mail-function 'smtpmail-send-it)
