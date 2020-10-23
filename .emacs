@@ -259,11 +259,19 @@
 
 ;; Haskell
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :hook (haskell-mode . interactive-haskell-mode)
+  :custom
+  (haskell-interactive-popup-errors . nil)
+  :config
+  ;(setq haskell-process-type 'stack-ghci)
+  ;(setq haskell-process-type 'auto)
+  )
 
 (use-package lsp-haskell
   :ensure t
   :config
+  ;; (setq lsp-haskell-process-path-hie "hie-wrapper")
   :hook (haskell-mode . lsp)
   )
 
@@ -274,7 +282,10 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "multimarkdown")
+  :config
+  (setq markdown-fontify-code-blocks-natively t) ;; change with C-c C-x C-f
+  )
 
 ;; Rust
 (use-package rust-mode
@@ -350,6 +361,9 @@
   :ensure t
   :bind (:map dart-mode-map
               ("C-M-x" . #'flutter-run-or-hot-reload)))
+
+(use-package lsp-dart 
+  :ensure t) 
 
 ;; GO
 (use-package go-mode
@@ -545,5 +559,30 @@
 ;; C#
 (use-package csharp-mode
   :ensure t)
+
+;; protobuf
+(use-package protobuf-mode
+  :ensure t)
+
+;; erc
+(setq  erc-autojoin-channels-alist
+          '(("freenode.net" "#haskell-docs")))
+(setq erc-nick '("MCSH"))
+
+;; roam
+
+(use-package org-roam
+      :ensure t
+      :hook
+      (after-init . org-roam-mode)
+      :custom
+      (org-roam-directory "/home/sajjad/src/roam/")
+      :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph-show))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
 
 ;; EOF

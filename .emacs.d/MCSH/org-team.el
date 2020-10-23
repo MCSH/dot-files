@@ -19,6 +19,7 @@
         ("research" . (:foreground "goldenrod1"))
         ("hobby" . (:foreground "forest green"))
         ("idea" . (:foreground "magenta"))
+        ("proxify" . (:foreground "magenta"))
         ))
 
 (defun my-org-agenda-skip-blocked ()
@@ -30,7 +31,15 @@
         )))
 
 (setq org-agenda-custom-commands
-      '(("r" "School work" tags-todo "school" )
+      '(
+        ("c" "Classes"
+         ((agenda "" ((org-agenda-span 7)))
+          (tags-todo "+classes"))
+         ((org-agenda-tag-filter-preset '("+classes"))))
+        ("r" "School"
+         ((agenda "" ((org-agenda-span 7)))
+          (tags-todo "+school"))
+         ((org-agenda-tag-filter-preset '("+school"))))
         ("h" "Hobby" tags-todo "hobby")
         ("p" "Personal"
          ((agenda "" ((org-agenda-span 7)))
