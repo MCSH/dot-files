@@ -21,3 +21,7 @@
 /.emacs.d/.org-id-locations
 /.emacs.d/org-gcal/
 /.emacs.d/network-security.data
+.emacs.d/.cache
+.emacs.d/.dap-breakpoints
+.emacs.d/eshell
+.emacs.d/org-roam.db

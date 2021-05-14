@@ -1,6 +1,7 @@
 ;; Set up package list
 (require 'package)
 (add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (setq package-enable-at-startup nil)
@@ -36,6 +37,23 @@
        (interactive)
        (load-theme 'deeper-blue))
 
+(defun MCSH/org-reset-agenda-files () "Set back the original agenda files"
+       (setq org-agenda-files (list "~/src/TODO.org" "~/src/personal/schedule.org"))
+       )
+
+(defun org-sole-agenda () "Set the current buffer as the only agenda file"
+       (interactive)
+       (setq org-agenda-files (list (file-truename (buffer-file-name))))
+       )
+
+(defun org-default-agenda ()
+  (interactive)
+  (MCSH/org-reset-agenda-files))
+
+(defun org-add-to-agenda () "Add the current buffer to agenda"
+     (interactive)
+     (add-to-list 'org-agenda-files (file-truename (buffer-file-name))))
+
 (use-package org
   :ensure t
   :config
@@ -45,7 +63,8 @@
   (define-key global-map "\C-cc" 'org-capture)
   (define-key global-map "\C-cb" 'org-iswitchb)
   ;; Agenda file
-  (setq org-agenda-files (list "~/src/TODO.org" "~/src/personal/schedule.org"))
+  ; (setq org-agenda-files (list "~/src/TODO.org" "~/src/personal/schedule.org"))
+  (MCSH/org-reset-agenda-files)
   (setq org-agenda-start-on-weekday nil)
   (setq org-agenda-start-day "-1d")
   (add-to-list 'org-modules 'org-habit t)
@@ -76,6 +95,13 @@
 ;; Scaling fonts
 
 (set-face-attribute 'default nil :height 130)
+(defun zoomin ()
+  (interactive)
+  (set-face-attribute 'default nil :height 160))
+
+(defun zoomout ()
+  (interactive)
+  (set-face-attribute 'default nil :height 130))
 
 ;; Remove the useless stuff
 (scroll-bar-mode -1)
@@ -271,7 +297,7 @@
 (use-package lsp-haskell
   :ensure t
   :config
-  ;; (setq lsp-haskell-process-path-hie "hie-wrapper")
+  ;; (setq lsp-haskell-process-path-hie "hie-wrapper") ;; TODO
   :hook (haskell-mode . lsp)
   )
 
@@ -394,12 +420,22 @@
   :config
   (evil-define-key 'normal lsp-mode-map (kbd "g d") 'lsp-find-declaration)
   (setq lsp-dart-sdk-dir "/opt/flutter/bin/cache/dart-sdk")
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  (setq lsp-completion-provider :capf)
+  (setq lsp-idle-delay 0.500)
+  (setq lsp-log-io nil) ; if set to true can cause a performance hit
+  (setq lsp-headerline-breadcrumb-enable nil) ;; We can enable it later on but have to config it first
   )
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (use-package golden-ratio
   :ensure t
   :config
   (golden-ratio-mode 1)
+  (setq golden-ratio-adjust-factor        .6
+        golden-ratio-wide-adjust-factor   .8)
 
 (defun fix-ratio (orig &rest args)
       (apply orig args)
@@ -413,6 +449,7 @@
   (message "hoof")
   )
 
+(golden-ratio-toggle-widescreen)
 (add-hook 'lv-window-hook 'max-lv-size-func)
 
 (use-package company-lsp
@@ -584,5 +621,79 @@
               :map org-mode-map
               (("C-c n i" . org-roam-insert))
               (("C-c n I" . org-roam-insert-immediate))))
+
+;; Surrond w/ pair
+(global-set-key (kbd "M-[") 'insert-pair)
+(global-set-key (kbd "M-{") 'insert-pair)
+(global-set-key (kbd "M-\"") 'insert-pair)
+(global-set-key (kbd "M-ج") (lambda ()
+                              (interactive)
+                              (insert-pair nil ?\[ ?\])))
+
+;; cmake
+;; enable colors in compilation
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+
+;; compilation window auto close
+;; Make the compilation window automatically disappear - from enberg on #emacs
+(setq auto-hide-compilation t)
+;; (setq auto-hide-compilation nil)
+
+(setq compilation-finish-functions
+      (lambda (buf str)
+        (if (null (string-match ".*exited abnormally.*" str))
+            ;;no errors, make the compilation window go away in a few seconds
+            (if auto-hide-compilation
+            (progn
+              (run-at-time
+               "1 sec" nil 'quit-windows-on
+               (get-buffer-create "*compilation*"))
+              (message "No Compilation Errors!"))
+            nil))))
+
+
+(defun toggle-compile-autohide () "toggle auto hiding compile"
+       (interactive)
+       (setq auto-hide-compilation (not auto-hide-compilation)))
+
+;; undo tree
+(global-undo-tree-mode)
+
+;; elixir
+
+(use-package elixir-mode
+  :ensure t)
+
+(use-package alchemist
+  :ensure t)
+
+(use-package smartparens
+  :ensure t
+  :hook (elixir-mode . smartparens-mode)
+  :config
+  (defun my-elixir-do-end-close-action (id action context)
+    (when (eq action 'insert)
+      (newline-and-indent)
+      (previous-line)
+      (indent-according-to-mode)))
+
+  (sp-with-modes '(elixir-mode)
+    (sp-local-pair "do" "end"
+                   :when '(("SPC" "RET"))
+                   :post-handlers '(:add my-elixir-do-end-close-action)
+                   :actions '(insert)))
+  )
+
+(add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.leex\\'" . web-mode))
+
+(setq web-mode-engines-alist
+      '(("elixir" . "\\.leex\\'")))
 
 ;; EOF

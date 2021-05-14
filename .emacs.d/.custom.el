@@ -14,7 +14,6 @@
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    '("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" default))
- '(dart-format-on-save t t)
  '(golden-ratio-mode t)
  '(highlight-changes-colors '("#d33682" "#6c71c4"))
  '(highlight-symbol-colors
@@ -41,14 +40,37 @@
  '(nrepl-message-colors
    '("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4"))
  '(org-agenda-files '("~/src/TODO.org" "~/src/personal/schedule.org"))
- '(org-journal-date-format "%e %b %Y (%A)")
- '(org-journal-dir "~/writing/journal/")
- '(org-journal-file-format "%Y-%m-%d")
- '(org-pomodoro-keep-killed-pomodoro-time t)
  '(package-selected-packages
-   '(org-roam lsp-dart protobuf-mode csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
+   '(smartparens alchemist elixir-mode ada-mode lsp-python-ms org org-roam lsp-dart protobuf-mode csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
+ '(safe-local-variable-values
+   '((eval setq-local compile-command
+           (concat "cmake --build "
+                   (projectile-project-root)
+                   "/build -j8"))
+     (eval setq-local compile-command
+           (concat "cmake -H"
+                   (projectile-project-root)
+                   " -B"
+                   (projectile-project-root)
+                   "/build"))
+     (eval setq compile-command
+           (concat "cmake --build "
+                   (projectile-project-root)
+                   "/build -j8"))
+     (eval setq compile-command
+           (concat "cmake -H"
+                   (projectile-project-root)
+                   " -B"
+                   (projectile-project-root)
+                   "/build"))
+     (eval setq compile-command
+           (concat "cmake -H"
+                   (projectile-project-root)
+                   " -B"
+                   (projectile-project-root)
+                   "/build -j8"))))
  '(send-mail-function 'smtpmail-send-it)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")

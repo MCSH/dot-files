@@ -6,9 +6,14 @@ ZSH_THEME="eastwood"
 # Custom, custom folder
 ZSH_CUSTOM=/home/sajjad/src/git/dot-files/zsh-custom/
 
-plugins=(git jump flutter cargo go stack yarn history-substring-search)
+#plugins=(git jump flutter cargo golang stack yarn history-substring-search)
+plugins=(git jump flutter cargo golang yarn mix-fast history-substring-search)
+
+export DISABLE_AUTO_UPDATE="true" 
 
 source $ZSH/oh-my-zsh.sh
+
+unset DISABLE_AUTO_UPDATE
 
 # User configuration
 
@@ -78,4 +83,12 @@ export PATH=$PATH:~/.local/share/rumi/bin/
 compinit
 
 # direnv
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
+
+# dotnet?
+# export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/3.*/Sdks );
+
+export PATH=$PATH:~/.cargo/bin/
+
+# opam configuration
+test -r /home/sajjad/.opam/opam-init/init.zsh && . /home/sajjad/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
