@@ -1,0 +1,38 @@
+#!/bin/python
+# import sys
+import argparse
+
+
+def jamemishe(num, s, start=1, ignores=[]):
+    ans = []
+    if num == 0:
+        return None
+    if num == 1:
+        if s < 10 and start <= s and s not in ignores:
+            return [s]
+        return None
+    for i in range(start, 10):
+        if i in ignores: continue
+        out = jamemishe(num-1, s-i, i+1, ignores=ignores)
+        if out is not None:
+            if type(out[0]) == int:
+                ans.append(out+[i])
+            else:
+                for o in out:
+                    ans.append(o+[i])
+    if ans:
+        return ans
+    return None
+
+if __name__ == "__main__":
+    # a, b = sys.argv[-2:]
+    parser = argparse.ArgumentParser()
+    parser.add_argument('a')
+    parser.add_argument('b')
+    parser.add_argument('ignore', nargs="*")
+    args = parser.parse_args()
+    a = args.a
+    b = args.b
+    ignores = list(map(int, args.ignore))
+    for i in jamemishe(int(a), int(b), ignores=ignores):
+        print (i)

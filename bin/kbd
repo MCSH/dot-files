@@ -1,0 +1,137 @@
+#!/bin/python
+import colorsys
+import random
+import argparse
+import subprocess
+import time
+
+from openrazer.client import DeviceManager
+from openrazer.client import constants as razer_constants
+
+CLEAR = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+PURPLE = (255, 0, 255)
+
+
+def explicit(dic):
+    # Set random colors for each zone of each device
+    device_manager = DeviceManager()
+
+    devices = device_manager.devices
+    for device in devices:
+
+        device.brightness = 100.0
+
+        rows, cols = device.fx.advanced.rows, device.fx.advanced.cols
+
+        # print(rows, cols)
+
+        for row in range(rows):
+            for col in range(cols):
+                color = CLEAR
+                if (row, col) in dic:
+                    color = dic[(row, col)]
+                device.fx.advanced.matrix[row, col] = color
+
+        device.fx.advanced.draw()
+
+
+def main(**kwargs):
+    conds = kwargs
+    dic = {
+    }
+    if conds['wasd']:
+        dic.update({
+            (2, 3): RED,
+            (3, 2): RED,
+            (3, 3): RED,
+            (3, 4): RED,
+        })
+
+    if conds['arrow']:
+        dic.update({
+            (4, 16): RED,
+            (5, 15): RED,
+            (5, 16): RED,
+            (5, 17): RED,
+        })
+
+    if conds['hjkl']:
+        dic.update({
+            (3, 7): BLUE,
+            (3, 8): BLUE,
+            (3, 9): BLUE,
+            (3, 10): BLUE,
+        })
+
+    if conds['spc']:
+        dic.update({
+            (5, 7): PURPLE,
+        })
+
+    if conds['enter']:
+        dic.update({
+            (3, 14): PURPLE,
+        })
+
+    if conds['esc']:
+        dic.update({
+            (0, 1): RED,
+        })
+
+    numStatus = subprocess.getoutput("xset q | grep Caps | tr -s ' ' | cut -d ' ' -f 9")
+    if numStatus == 'on':
+        dic.update({
+            (2, 19): GREEN,
+            (3, 18): GREEN,
+            (3, 20): GREEN,
+            (4, 19): GREEN,
+
+            (3, 19): BLUE,
+            (2, 18): BLUE,
+            (2, 20): BLUE,
+            (4, 18): BLUE,
+            (4, 20): BLUE,
+        })
+
+    capStatus = subprocess.getoutput("xset q | grep Caps | tr -s ' ' | cut -d ' ' -f 5")
+    if capStatus == 'on':
+        dic.update({
+            (3, 1): BLUE,
+        })
+
+    explicit(dic)
+
+
+def add_args(ap, key, dest):
+    ap.add_argument(key, dest=dest, action='store_true')
+
+
+def mainLoop(onLoop, **kwargs):
+    if not onLoop:
+        main(**kwargs)
+    else:
+        while True:
+            main(**kwargs)
+            time.sleep(0.3)
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+
+    add_args(ap, '--wasd', 'wasd')
+    add_args(ap, '--hjkl', 'hjkl')
+    add_args(ap, '--spc', 'spc')
+    add_args(ap, '--esc', 'esc')
+    add_args(ap, '--enter', 'enter')
+    add_args(ap, '--loop', 'onLoop')
+    add_args(ap, '--arrow', 'arrow')
+    # add_args(ap, '--numpad', 'numpad')
+
+    args = ap.parse_args()
+
+    d = args.__dict__
+
+    mainLoop(**d)
