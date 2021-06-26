@@ -250,7 +250,6 @@
   :config
   (use-package evil-magit
     :ensure t)
-  (define-key global-map (kbd "C-c C-g") 'magit)
   (define-key global-map (kbd "C-c g") 'magit)
   )
 
@@ -290,7 +289,7 @@
   :custom
   (haskell-interactive-popup-errors . nil)
   :config
-  ;(setq haskell-process-type 'stack-ghci)
+  (setq haskell-process-type 'stack-ghci)
   ;(setq haskell-process-type 'auto)
   )
 
@@ -587,9 +586,13 @@
   )
 
 ;; SLIME
-(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+;;(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+(use-package slime
+  :ensure t)
+
 ;; Replace "sbcl" with the path to your implementation
-(setq inferior-lisp-program "clisp")
+;; (setq inferior-lisp-program "clisp")
+(setq inferior-lisp-program "sbcl")
 
 (global-set-key (kbd "C-c C-e") 'slime-eval-last-expression-in-repl)
 
@@ -695,5 +698,17 @@
 
 (setq web-mode-engines-alist
       '(("elixir" . "\\.leex\\'")))
+
+;; agda
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))
+(evil-define-key 'normal agda2-mode-map "gd" 'agda2-goto-definition-keyboard)
+(define-key agda2-mode-map (kbd "C-c C-v") 'agda2-next-goal)
+(setq agda2-fontset-name "mononoki")
+
+;; idris-2
+
+(use-package idris-mode
+  :ensure t)
 
 ;; EOF

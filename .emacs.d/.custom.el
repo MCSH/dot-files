@@ -3,10 +3,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(agda2-backend "GHC")
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+ '(auto-save-default nil)
  '(compilation-message-face 'default)
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
@@ -40,8 +42,10 @@
  '(nrepl-message-colors
    '("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4"))
  '(org-agenda-files '("~/src/TODO.org" "~/src/personal/schedule.org"))
+ '(org-default-notes-file "~/src/TODO.org")
+ '(org-priority-default 67)
  '(package-selected-packages
-   '(smartparens alchemist elixir-mode ada-mode lsp-python-ms org org-roam lsp-dart protobuf-mode csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
+   '(slime idris-mode :idris-mode :idris2 smartparens alchemist elixir-mode ada-mode lsp-python-ms org org-roam lsp-dart protobuf-mode csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(safe-local-variable-values
@@ -87,4 +91,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(MCSH-evil-active-default ((t (:inherit mode-line)))))
