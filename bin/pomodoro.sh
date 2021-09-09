@@ -3,7 +3,7 @@
 pomodor_wait(){
     if [ -z "$1" ]
     then
-        M=20
+        M=45
     else
         M=$1
     fi

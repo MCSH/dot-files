@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export KEYBOARD=14
+export KEYBOARD=15
 export MASTER=3
 
 xinput list | grep float

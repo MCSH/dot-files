@@ -1,12 +1,14 @@
 #!/bin/bash
 
-ROT=$(xrandr --query --verbose | grep "^DP1" | cut -d ' ' -f 5)
+MONITOR=HDMI-1-0
+
+ROT=$(xrandr --query --verbose | grep "^$MONITOR" | cut -d ' ' -f 5)
 
 
 if [ "$ROT" = "normal" ]; then
-    xrandr --output DP1 --rotate left
+    xrandr --output $MONITOR --rotate left
 elif [ "$ROT" = "left" ]; then
-    xrandr --output DP1 --rotate right
+    xrandr --output $MONITOR --rotate right
 else
-    xrandr --output DP1 --rotate normal
+    xrandr --output $MONITOR --rotate normal
 fi

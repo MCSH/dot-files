@@ -139,6 +139,7 @@
   (add-to-list 'auto-mode-alist '("src\\/.*\\.js\\'" . rjsx-mode))
   )
 
+
 (use-package js2-mode
   :ensure t)
 
@@ -710,5 +711,9 @@
 
 (use-package idris-mode
   :ensure t)
+
+;; envy
+; (add-to-list 'auto-mode-alist '("\\.envy\\'" . lisp-mode))
+(add-to-list 'auto-coding-alist '("\\.envy" . default-generic-mode))
 
 ;; EOF
