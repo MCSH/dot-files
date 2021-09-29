@@ -20,6 +20,7 @@
         ("hobby" . (:foreground "forest green"))
         ("idea" . (:foreground "magenta"))
         ("proxify" . (:foreground "magenta"))
+        ("acne" . (:foreground "magenta"))
         ))
 
 (defun my-org-agenda-skip-blocked ()
@@ -46,6 +47,7 @@
           (tags-todo "personal"))
          ((org-agenda-tag-filter-preset '("+personal"))))
         ("j" "journal papers" tags-todo "papers")
+        ("l" "acne studios" tags-todo "acne")
         ("n" "All"
          ((agenda "" ((org-agenda-span 7)))
           (tags-todo "-personal-hobby"))

@@ -249,8 +249,6 @@
 (use-package magit
   :ensure t
   :config
-  (use-package evil-magit
-    :ensure t)
   (define-key global-map (kbd "C-c g") 'magit)
   )
 
@@ -355,10 +353,10 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package company-tern
-  :ensure t
-  :config
-  (add-to-list 'company-backends 'company-tern))
+;; (use-package company-tern
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'company-backends 'company-tern))
 
 ;; 2048
 
@@ -452,9 +450,11 @@
 (golden-ratio-toggle-widescreen)
 (add-hook 'lv-window-hook 'max-lv-size-func)
 
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
+
+;; replace with capf?
+;; (use-package company-lsp
+;;   :ensure t
+;;   :commands company-lsp)
 
 (use-package helm-lsp
   :ensure t
@@ -484,7 +484,7 @@
   )
 
 ;; Rumi
-(require 'rumi)
+;; (require 'rumi)
 
 ;; Bison and Lex
 (use-package bison-mode
@@ -609,22 +609,6 @@
 (setq  erc-autojoin-channels-alist
           '(("freenode.net" "#haskell-docs")))
 (setq erc-nick '("MCSH"))
-
-;; roam
-
-(use-package org-roam
-      :ensure t
-      :hook
-      (after-init . org-roam-mode)
-      :custom
-      (org-roam-directory "/home/sajjad/src/roam/")
-      :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph-show))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
 
 ;; Surrond w/ pair
 (global-set-key (kbd "M-[") 'insert-pair)
