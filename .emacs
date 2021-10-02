@@ -109,20 +109,21 @@
 (menu-bar-mode -1)
 
 ;; Interactively do things
-(setq ido-enable-flex-matching t)
-(ido-mode 1)
+;; (setq ido-enable-flex-matching t)
+;; (ido-mode 1)
 
-(use-package flx-ido
-   :ensure t
-   :init (setq ido-enable-flex-matching t
-               ido-use-faces nil)
-   :config (flx-ido-mode 1))
+;; (use-package flx-ido
+;;    :ensure t
+;;    :init (setq ido-enable-flex-matching t
+;;                ido-use-faces nil)
+;;    :config (flx-ido-mode 1))
 
-(use-package smex
-  :ensure t
-  :init (smex-initialize)
-  :bind ("M-x" . smex)
-  ("M-X" . smex-major-mode-commands))
+
+;; (use-package smex
+;;   :ensure t
+;;   :init (smex-initialize)
+;;   :bind ("M-x" . smex)
+;;   ("M-X" . smex-major-mode-commands))
 
 ;; JSX
 (use-package rjsx-mode
@@ -147,11 +148,22 @@
 (use-package helm
   :ensure t
   :config
+  (helm-mode 1)
+
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-c C-b") 'helm-buffers-list)
-  ;(setq helm-display-function 'helm-display-buffer-in-own-frame
-  ;      helm-display-buffer-reuse-frame t
-  ;      helm-use-undecorated-frame-option t)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  ;; (setq helm-display-function 'helm-display-buffer-in-own-frame
+  ;;      Helm-display-buffer-reuse-frame t
+  ;;      helm-use-undecorated-frame-option t)
+  )
+
+(use-package helm-flx
+  :ensure t
+  :config
+  (setq helm-flx-for-helm-find-files t ;; t by default
+        helm-flx-for-helm-locate nil) ;; nil by default
+  (helm-flx-mode 1)
   )
 
 ;; No default backup
@@ -431,7 +443,7 @@
 (use-package golden-ratio
   :ensure t
   :config
-  (golden-ratio-mode 1)
+  (golden-ratio-mode 0) ;; disable by default
   (setq golden-ratio-adjust-factor        .6
         golden-ratio-wide-adjust-factor   .8)
 
@@ -651,7 +663,7 @@
        (setq auto-hide-compilation (not auto-hide-compilation)))
 
 ;; undo tree
-(global-undo-tree-mode)
+;; (global-undo-tree-mode)
 
 ;; elixir
 
@@ -688,7 +700,7 @@
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
 (evil-define-key 'normal agda2-mode-map "gd" 'agda2-goto-definition-keyboard)
-(define-key agda2-mode-map (kbd "C-c C-v") 'agda2-next-goal)
+; (define-key agda2-mode-map (kbd "C-c C-v") 'agda2-next-goal)
 (setq agda2-fontset-name "mononoki")
 
 ;; idris-2
@@ -699,5 +711,95 @@
 ;; envy
 ; (add-to-list 'auto-mode-alist '("\\.envy\\'" . lisp-mode))
 (add-to-list 'auto-coding-alist '("\\.envy" . default-generic-mode))
+
+;; roam
+(setq org-directory (concat (getenv "HOME") "/src/roam/"))
+
+(use-package org-roam
+  :after org
+  :ensure t
+  :init (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory (file-truename org-directory))
+  (org-roam-complete-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain "%?" :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t)
+     ("b" "book notes" plain (file "~/src/roam/templates/BookNoteTemplate.org")
+      :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t)
+     ("l" "programming language" plain (file "~/src/roam/templates/LanguageTemplate.org")
+      :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t)))
+  :config
+  (org-roam-setup)
+  :bind (("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n r" . org-roam-node-random)
+         ("C-c n c" . org-roam-capture)
+         ("C-c n J" . org-roam-dailies-goto-today)
+         (:map org-mode-map
+               (("C-c n i" . org-roam-node-insert)
+                ("C-c n o" . org-id-get-create)
+                ("C-c n t" . org-roam-tag-add)
+                ("C-c n a" . org-roam-alias-add)
+                ("C-c n l" . org-roam-buffer-toggle)
+                ("C-M-i" . completion-at-point))))
+  :bind-keymap
+  ("C-c n j" . org-roam-dailies-map))
+
+(require 'org-roam-protocol)
+
+(setq org-roam-dailies-directory "daily/")
+
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org"
+                            "#+title: %<%Y-%m-%d>\n"))))
+
+(use-package deft
+  :after org
+  :ensure t
+  :bind
+  ("C-c n d" . deft)
+  :custom
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org")
+  (deft-directory org-roam-directory))
+
+;; winner mode (window change mode)
+(winner-mode +1)
+(define-key winner-mode-map (kbd "<M-left>") #'winner-undo)
+(define-key winner-mode-map (kbd "<M-right>") #'winner-redo)
+
+
+;; org-roam-ui
+
+;; this is an alpha package...
+
+(use-package websocket
+  :ensure t)
+(use-package simple-httpd
+  :ensure t)
+
+(add-to-list 'load-path "~/.emacs.d/org-roam-ui/")
+(load-library "org-roam-ui")
+
+(setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t)
+
+;; end of org-roam-ui
+
+;; org-babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((ruby . t)
+   (shell . t)
+   (python . t)
+   (R . t)))
+
+(use-package ess
+  :ensure t)
 
 ;; EOF

@@ -25,3 +25,4 @@
 .emacs.d/.dap-breakpoints
 .emacs.d/eshell
 .emacs.d/org-roam.db
+.emacs.d/tramp
