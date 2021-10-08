@@ -4,6 +4,8 @@
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
+(add-to-list `load-path "~/.emacs.d/MCSH")
+
 (setq package-enable-at-startup nil)
 (package-initialize)
 
@@ -18,23 +20,38 @@
 
 ;; My theme!
 (load-theme 'misterioso)
+;; (load-theme 'wombat)
 
 ;; Day and night
 
+(defun disable-all-themes ()
+  "disable all active themes."
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
+
 (defun day () "Make it usefull in bright enviornment"
        (interactive)
+       (disable-all-themes)
        (load-theme 'leuven))
 
 (defun afternoon () "Just a darkish theme"
        (interactive)
+       (disable-all-themes)
        (load-theme 'tango-dark))
 
 (defun night () "Take it back!!!"
        (interactive)
+       (disable-all-themes)
        (load-theme 'misterioso))
+
+(defun altnight () "For greener nights!"
+       (interactive)
+       (disable-all-themes)
+       (load-theme 'wombat))
 
 (defun latenight () "Just a really dark theem"
        (interactive)
+       (disable-all-themes)
        (load-theme 'deeper-blue))
 
 (defun MCSH/org-reset-agenda-files () "Set back the original agenda files"
@@ -86,6 +103,9 @@
   :after org
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (visual-line-mode)))
   (add-hook 'evil-org-mode-hook
             (lambda ()
               (evil-org-set-key-theme)))
@@ -95,6 +115,8 @@
 ;; Scaling fonts
 
 (set-face-attribute 'default nil :height 130)
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+
 (defun zoomin ()
   (interactive)
   (set-face-attribute 'default nil :height 160))
@@ -212,9 +234,8 @@
 ;; Powerline
 (add-to-list `load-path "~/.emacs.d/vendor/powerline")
 (require 'powerline)
-;(powerline-default-theme)
+;; ;; (powerline-default-theme)
 
-(add-to-list `load-path "~/.emacs.d/MCSH")
 (require 'powerline-MCSH)
 
 ;; Set custom file
@@ -741,9 +762,25 @@
                 ("C-c n t" . org-roam-tag-add)
                 ("C-c n a" . org-roam-alias-add)
                 ("C-c n l" . org-roam-buffer-toggle)
+                ("C-c n b" . helm-bibtex)
                 ("C-M-i" . completion-at-point))))
   :bind-keymap
   ("C-c n j" . org-roam-dailies-map))
+
+(add-to-list 'display-buffer-alist
+             '("\\*org-roam\\*"
+               (display-buffer-in-side-window)
+               (side . right)
+               (slot . 0)
+               (window-width . 0.33)
+               (window-parameters . ((no-other-window . t)
+                                     (no-delete-other-windows . t)))))
+
+(setq org-roam-mode-section-functions
+      (list #'org-roam-backlinks-section
+            #'org-roam-reflinks-section
+            #'org-roam-unlinked-references-section
+            ))
 
 (require 'org-roam-protocol)
 
@@ -800,6 +837,30 @@
    (R . t)))
 
 (use-package ess
+  :ensure t)
+
+;; org-ref (for citations)
+(use-package org-ref
+  :ensure t
+  :config
+  (setq org-ref-bibliography-notes "~/src/roam/bibnotes.org"
+        org-ref-default-bibliography '("~/src/bibs/library.bib")
+        org-ref-pdf-directory "~/src/manitoba/2.ref/")
+  (setq bibtex-completion-bibliography "~/src/bibs/library.bib"
+        bibtex-completion-library-path "~/src/manitoba/2.ref"
+        bibtex-completion-notes-path "~/src/roam/"))
+
+(use-package helm-bibtex
+  :ensure t)
+
+(use-package org-roam-bibtex
+  :ensure t
+  :config
+  (org-roam-bibtex-mode 1))
+
+;; csv
+
+(use-package csv-mode
   :ensure t)
 
 ;; EOF
