@@ -99,4 +99,31 @@
 
 ;; TODO Complete this
 
+;;; agenda auto-update
+;; (defvar refresh-agenda-time-seconds 300)
+
+;; (defvar refresh-agenda-timer nil
+;;   "Timer for `refresh-agenda-timer-function' to reschedule itself, or nil.")
+
+;; (defun refresh-agenda-timer-function ()
+;;   ;; If the user types a command while refresh-agenda-timer
+;;   ;; is active, the next time this function is called from
+;;   ;; its main idle timer, deactivate refresh-agenda-timer.
+;;   (when refresh-agenda-timer
+;;     (cancel-timer refresh-agenda-timer))
+
+;;   (org-agenda nil "b")
+
+;;   (setq refresh-agenda-timer
+;;     (run-with-idle-timer
+;;       ;; Compute an idle time break-length
+;;       ;; more than the current value.
+;;       (time-add (current-idle-time) refresh-agenda-time-seconds)
+;;       nil
+;;       'refresh-agenda-timer-function)))
+
+;; (run-with-idle-timer refresh-agenda-time-seconds t 'refresh-agenda-timer-function)
+;;;
+
 (provide 'org-team)
+

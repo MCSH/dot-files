@@ -10,3 +10,6 @@
 [submodule ".emacs.d/org-roam-ui"]
 	path = .emacs.d/org-roam-ui
 	url = git@github.com:org-roam/org-roam-ui.git
+[submodule ".emacs.d/idris2-mode"]
+	path = .emacs.d/idris2-mode
+	url = git@github.com:idris-community/idris2-mode.git

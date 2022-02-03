@@ -90,5 +90,10 @@ compinit
 
 export PATH=$PATH:~/.cargo/bin/
 
+export PATH=$PATH:~/.idris2/bin/
+
 # opam configuration
 test -r /home/sajjad/.opam/opam-init/init.zsh && . /home/sajjad/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# stack
+export PATH="~/.local/bin:$PATH"

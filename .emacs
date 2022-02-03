@@ -111,6 +111,11 @@
               (evil-org-set-key-theme)))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
+;; scaling images
+
+;; (setq org-image-actual-width 500)
+(setq org-image-actual-width nil)
   
 ;; Scaling fonts
 
@@ -314,6 +319,32 @@
 (use-package vue-html-mode
   :ensure t)
 
+;; LSP
+(use-package lsp-mode
+  :ensure t
+  :hook (go-mode . lsp)
+  :hook (python-mode . lsp)
+  :hook (c++-mode . lsp)
+  :hook (c-mode . lsp)
+  :hook (dart-mode . lsp)
+  :commands lsp
+  :config
+  (evil-define-key 'normal lsp-mode-map (kbd "g d") 'lsp-find-declaration)
+  (setq lsp-dart-sdk-dir "/opt/flutter/bin/cache/dart-sdk")
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  (setq lsp-completion-provider :capf)
+  (setq lsp-idle-delay 0.500)
+  (setq lsp-log-io nil) ; if set to true can cause a performance hit
+  (setq lsp-headerline-breadcrumb-enable nil) ;; We can enable it later on but have to config it first
+  )
+
+(use-package helm-lsp
+  :ensure t
+  :config
+  (define-key lsp-mode-map "\C-c\C-h" 'helm-lsp-code-actions)
+  (define-key lsp-mode-map "\C-c\C-d" 'helm-lsp-diagnostics))
+
 ;; Haskell
 (use-package haskell-mode
   :ensure t
@@ -331,6 +362,26 @@
   ;; (setq lsp-haskell-process-path-hie "hie-wrapper") ;; TODO
   :hook (haskell-mode . lsp)
   )
+
+;; ;; setting up haskell wingman
+
+;; (lsp-make-interactive-code-action wingman-fill-hole "refactor.wingman.fillHole")
+;; (define-key haskell-mode-map (kbd "C-c n") #'lsp-wingman-fill-hole)
+
+;; (lsp-make-interactive-code-action wingman-case-split "refactor.wingman.caseSplit")
+;; (define-key haskell-mode-map (kbd "C-c d") #'lsp-wingman-case-split)
+
+;; (lsp-make-interactive-code-action wingman-refine "refactor.wingman.refine")
+;; (define-key haskell-mode-map (kbd "C-c r") #'lsp-wingman-refine)
+
+;; (lsp-make-interactive-code-action wingman-split-func-args "refactor.wingman.spltFuncArgs")
+;; (define-key haskell-mode-map (kbd "C-c a") #'lsp-wingman-split-func-args)
+
+;; (lsp-make-interactive-code-action wingman-use-constructor "refactor.wingman.useConstructor")
+;; (define-key haskell-mode-map (kbd "C-c c") #'lsp-wingman-use-constructor)
+
+;; (lsp-make-interactive-code-action wingman-homo-split "refactor.wingman.homo")
+;; (define-key haskell-mode-map (kbd "C-c x") #'lsp-wingman-homo-split)
 
 ;; Markdown
 (use-package markdown-mode
@@ -438,26 +489,6 @@
   (defun auto-complete-for-go ()
     (auto-complete-mode 1))
   (add-hook 'go-mode-hook 'auto-complete-for-go))
-
-;; LSP
-(use-package lsp-mode
-  :ensure t
-  :hook (go-mode . lsp)
-  :hook (python-mode . lsp)
-  :hook (c++-mode . lsp)
-  :hook (c-mode . lsp)
-  :hook (dart-mode . lsp)
-  :commands lsp
-  :config
-  (evil-define-key 'normal lsp-mode-map (kbd "g d") 'lsp-find-declaration)
-  (setq lsp-dart-sdk-dir "/opt/flutter/bin/cache/dart-sdk")
-  (setq gc-cons-threshold 100000000)
-  (setq read-process-output-max (* 1024 1024)) ;; 1mb
-  (setq lsp-completion-provider :capf)
-  (setq lsp-idle-delay 0.500)
-  (setq lsp-log-io nil) ; if set to true can cause a performance hit
-  (setq lsp-headerline-breadcrumb-enable nil) ;; We can enable it later on but have to config it first
-  )
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
@@ -724,7 +755,7 @@
 ; (define-key agda2-mode-map (kbd "C-c C-v") 'agda2-next-goal)
 (setq agda2-fontset-name "mononoki")
 
-;; idris-2
+;; idris
 
 (use-package idris-mode
   :ensure t)
@@ -818,8 +849,10 @@
 (use-package simple-httpd
   :ensure t)
 
-(add-to-list 'load-path "~/.emacs.d/org-roam-ui/")
-(load-library "org-roam-ui")
+;; (add-to-list 'load-path "~/.emacs.d/org-roam-ui/")
+;; (load-library "org-roam-ui")
+(use-package org-roam-ui
+  :ensure t)
 
 (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
@@ -862,5 +895,94 @@
 
 (use-package csv-mode
   :ensure t)
+
+;; dashboard
+
+;; (use-package dashboard
+;;   :ensure t
+;;   :config
+;;   (dashboard-setup-startup-hook)
+;;   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+;;   (setq dashboard-projects-backend 'projectile)
+;;   (setq dashboard-footer-icon "Go forth and change the world!")
+;;   (setq dashboard-center-content 0)
+;;   (setq dashboard-items '(
+;;                           (projects . 5)
+;;                           (bookmarks . 5)
+;;                           (agenda . 5)
+;;                           (recents  . 5)
+;;                           ;; (registers . 5)
+;;                           ))
+;;   (setq dashboard-set-navigator t)
+;;   (setq dashboard-show-shortcuts nil)
+;;   (setq dashboard-set-footer nil)
+;;   (setq dashboard-startup-banner nil)
+;;   (setq dashboard-week-agenda nil)
+;;   (define-key dashboard-mode-map (kbd "<cr>") 'dashboard-return)
+;;   )
+
+;; dot graphviz
+
+(use-package graphviz-dot-mode
+  :ensure t)
+
+;; org-evil
+(use-package org-evil
+  :ensure t)
+
+;; idris-2
+
+(add-to-list 'load-path "~/.emacs.d/idris2-mode/")
+(require 'idris2-mode)
+
+(setq idris2-interpreter-path "~/.idris2/bin/idris2")
+
+;; ;;Fixes lag when editing idris code with evil
+;; (defun ~/evil-motion-range--wrapper (fn &rest args)
+;;   "Like `evil-motion-range', but override field-beginning for performance.
+;; See URL `https://github.com/ProofGeneral/PG/issues/427'."
+;;   (cl-letf (((symbol-function 'field-beginning)
+;;              (lambda (&rest args) 1)))
+;;     (apply fn args)))
+;; (advice-add #'evil-motion-range :around #'~/evil-motion-range--wrapper)
+
+(use-package exec-path-from-shell
+  :ensure t)
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
+(when (daemonp)
+  (exec-path-from-shell-initialize))
+
+;; default input method
+(setq default-input-method "farsi-isiri-9147")
+
+;; pyenv
+(use-package pyvenv
+  :ensure t)
+
+;; org refile
+(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+(setq org-outline-path-complete-in-steps nil) ;; so completion shows full paths
+(setq org-refile-use-outline-path 'file)
+
+;; latex
+
+;; (use-package auctex-latexmk
+;;   :ensure t)
+
+;; (load "auctex.el" nil t t)
+
+;; (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+;; (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+;; (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
+;; (setq TeX-parse-self t)
+;; (setq-default TeX-master nil)
+
+
+;; (use-package latex-preview-pane
+;;   :ensure t)
 
 ;; EOF

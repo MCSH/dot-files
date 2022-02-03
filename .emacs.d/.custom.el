@@ -6,8 +6,6 @@
  '(agda2-backend "GHC")
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(auto-save-default nil)
  '(compilation-message-face 'default)
  '(cua-global-mark-cursor-color "#2aa198")
@@ -44,8 +42,9 @@
  '(org-agenda-files '("~/src/TODO.org" "~/src/personal/schedule.org"))
  '(org-default-notes-file "~/src/TODO.org")
  '(org-priority-default 67)
+ '(org-roam-ui-mode t)
  '(package-selected-packages
-   '(csv-mode powerline-evil org-roam-bibtex org-roam-bibtext org-ref ess helm-flx simple-httpd websocket deft slime idris-mode :idris-mode :idris2 smartparens alchemist elixir-mode ada-mode lsp-python-ms org org-roam lsp-dart protobuf-mode csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
+   '(org-roam-ui auctex-latexmk auctex pyvenv pyenv exec-path-from-shell org-evil graphviz-dot-mode csv-mode powerline-evil org-roam-bibtex org-roam-bibtext org-ref ess helm-flx simple-httpd websocket deft slime idris-mode :idris-mode :idris2 smartparens alchemist elixir-mode ada-mode lsp-python-ms org org-roam lsp-dart protobuf-mode csharp-mode epresent org-alert org-edna web-mode tide tss typescript-mode evil-org glsl-mode vimrc-mode org-gcal org-pomodoro org-journal lua-mode flycheck-rust golden-ratio lsp-haskell cmake-mode bison-mode flycheck lsp-treemacs lsp-ui helm-lsp company-lsp lsp-mode go-autocomplete go-mode dart-mode flutter request 2048-game company-tern company projectile yasnippet-snippets yasnippet latex-preview-pane rust-mode markdown-mode haskell-mode vue-html-mode edit-indirect vue-mode neotree evil-magit helm-escreen escreen ElScreen rjsx-mode magit helm smex flx-ido yaml-mode dashboard use-package smooth-scrolling hl-todo evil))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(safe-local-variable-values

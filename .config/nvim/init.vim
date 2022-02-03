@@ -82,8 +82,8 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'Sudo npm install -g tern' }
 Plug 'zchee/deoplete-jedi'
 Plug 'ternjs/tern_for_vim'
 Plug 'alerque/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tommcdo/vim-fugitive-blame-ext'
+"Plug 'tpope/vim-fugitive'
+"Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'tpope/vim-abolish'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
@@ -97,7 +97,7 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'lervag/vimtex' , { 'for': 'tex' } " Maybe disable infavor of vim-polygt? TODO
 Plug 'junegunn/vim-easy-align'
 Plug 'derekwyatt/vim-scala'
-Plug 'ensime/ensime-vim', {'do': 'sudo pip2 install websocket-client sexpdata'} " TODO config???
+"Plug 'ensime/ensime-vim', {'do': 'sudo pip2 install websocket-client sexpdata'} " TODO config???
 Plug 'vim-syntastic/syntastic'
 " Plug 'xolox/vim-misc' " Req of vim-easytags
 " Plug 'xolox/vim-easytags'
@@ -114,6 +114,7 @@ Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'luochen1990/rainbow'
+Plug 'edwinb/idris2-vim'
 " Plug 'zhamlin/tiler.vim' " Check out later
 call plug#end()
 
