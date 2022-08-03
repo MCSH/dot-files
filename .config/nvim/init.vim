@@ -115,6 +115,7 @@ Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'luochen1990/rainbow'
 Plug 'edwinb/idris2-vim'
+Plug 'github/copilot.vim'
 " Plug 'zhamlin/tiler.vim' " Check out later
 call plug#end()
 

@@ -1,50 +1,50 @@
 (require 'generic-x) ;; Base of the generic mode
 
-(require 'smie)
+;; (require 'smie)
 
 
-(defvar rumi-smie-grammar
-    (smie-prec2->grammar
-     (smie-bnf->prec2
-      '((id)
-        (statements (statement)
-                    (statement ";" statements))
-        (statement ("if" "(" expr ")"statement)
-                   ("if" "(" expr ")""esle" statement)
-                   ("{" statements "}")
-                   ("while" "("expr")"statement)
-                   (id ":=" "(" args ")" "->" id "{" statements "}")
-                   (id ":" struct "{" statements "}")
-                   (id ":" id "=" expr)
-                   (id "=" expr)
-                   (id ":=" expr)
-                   )
-        (expr
-         (id)
-         (id "==" expr)
-         (id "+" expr)
-         (id "-" expr)
-         (id "/" expr)
-         (id "*" expr)
-         ;("("expr")" "." id)
-         )
-        )
-      )))
+;; (defvar rumi-smie-grammar
+;;     (smie-prec2->grammar
+;;      (smie-bnf->prec2
+;;       '((id)
+;;         (statements (statement)
+;;                     (statement ";" statements))
+;;         (statement ("if" "(" expr ")"statement)
+;;                    ("if" "(" expr ")""esle" statement)
+;;                    ("{" statements "}")
+;;                    ("while" "("expr")"statement)
+;;                    (id ":=" "(" args ")" "->" id "{" statements "}")
+;;                    (id ":" struct "{" statements "}")
+;;                    (id ":" id "=" expr)
+;;                    (id "=" expr)
+;;                    (id ":=" expr)
+;;                    )
+;;         (expr
+;;          (id)
+;;          (id "==" expr)
+;;          (id "+" expr)
+;;          (id "-" expr)
+;;          (id "/" expr)
+;;          (id "*" expr)
+;;          ;("("expr")" "." id)
+;;          )
+;;         )
+;;       )))
 
-(defcustom rumi-indent-basic 2 "rumi indent")
+;; (defcustom rumi-indent-basic 2 "rumi indent")
 
-(defun rumi-smie-rules (kind token)
-  (pcase (cons kind token)
-    ;(`(:elem . basic) rumi-indent-basic)
-    (`(,_ . ",") (smie-rule-separator kind))
-    (`(:after . "->") 0)
-    ;(`(:after . ":=") rumi-indent-basic)
-    (`(:before . "{") rumi-indent-basic)
-    (`(:before . "}") (smie-rule-parent -2))
-    (`(:before . ,(or `"(" `"{"))
-     (if (smie-rule-hanging-p) (smie-rule-parent)))
-    (`(:before . "if") (and (not (smie-rule-bolp)) (smie-rule-prev-p "else") (smie-rule-parent)))
-    ))
+;; (defun rumi-smie-rules (kind token)
+;;   (pcase (cons kind token)
+;;     ;(`(:elem . basic) rumi-indent-basic)
+;;     (`(,_ . ",") (smie-rule-separator kind))
+;;     (`(:after . "->") 0)
+;;     ;(`(:after . ":=") rumi-indent-basic)
+;;     (`(:before . "{") rumi-indent-basic)
+;;     (`(:before . "}") (smie-rule-parent -2))
+;;     (`(:before . ,(or `"(" `"{"))
+;;      (if (smie-rule-hanging-p) (smie-rule-parent)))
+;;     (`(:before . "if") (and (not (smie-rule-bolp)) (smie-rule-prev-p "else") (smie-rule-parent)))
+;;     ))
     
 
 

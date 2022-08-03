@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec ssh 192.168.0.100 optirun leelaz --gtp --lagbuffer 0 --weights /usr/share/leela-zero/networks/weights.txt -t 3
+leelaz --gtp --lagbuffer 0 --weights /usr/share/leela-zero/networks/weights.txt -t 3

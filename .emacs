@@ -105,6 +105,7 @@
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'org-mode-hook
             (lambda ()
+              (electric-indent-local-mode -1)
               (visual-line-mode)))
   (add-hook 'evil-org-mode-hook
             (lambda ()
@@ -353,13 +354,14 @@
   (haskell-interactive-popup-errors . nil)
   :config
   (setq haskell-process-type 'stack-ghci)
+  (setq haskell-process-path-stack "/home/sajjad/.ghcup/bin/stack")
   ;(setq haskell-process-type 'auto)
   )
 
 (use-package lsp-haskell
   :ensure t
   :config
-  ;; (setq lsp-haskell-process-path-hie "hie-wrapper") ;; TODO
+  (setq lsp-haskell-server-path "/home/sajjad/.ghcup/bin/haskell-language-server-wrapper")
   :hook (haskell-mode . lsp)
   )
 
@@ -430,12 +432,20 @@
   (define-key projectile-mode-map (kbd "C-c f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on)
+  (setq projectile-completion-system 'helm
+        projectile-switch-project-action 'helm-projectile))
+
 ;; Company
 
 (use-package company
   :ensure t
   :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (setf company-idle-delay 0.1))
 
 ;; (use-package company-tern
 ;;   :ensure t
@@ -508,8 +518,7 @@
 
 (defun max-lv-size-func ()
   "Ensure lv is not larger than a size"
-  (message "hoof")
-  )
+  (message "hoof"))
 
 (golden-ratio-toggle-widescreen)
 (add-hook 'lv-window-hook 'max-lv-size-func)
@@ -548,7 +557,7 @@
   )
 
 ;; Rumi
-;; (require 'rumi)
+(require 'rumi)
 
 ;; Bison and Lex
 (use-package bison-mode
@@ -670,8 +679,9 @@
   :ensure t)
 
 ;; erc
-(setq  erc-autojoin-channels-alist
-          '(("freenode.net" "#haskell-docs")))
+(setq erc-default-server "irc.libera.chat")
+(setq erc-autojoin-channels-alist
+          '(("irc.libera.chat" "#lisp")))
 (setq erc-nick '("MCSH"))
 
 ;; Surrond w/ pair
@@ -752,7 +762,7 @@
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
 (evil-define-key 'normal agda2-mode-map "gd" 'agda2-goto-definition-keyboard)
-; (define-key agda2-mode-map (kbd "C-c C-v") 'agda2-next-goal)
+;; (define-key agda2-mode-map (kbd "C-c C-v") 'agda2-next-goal)
 (setq agda2-fontset-name "mononoki")
 
 ;; idris
@@ -775,11 +785,15 @@
   (org-roam-directory (file-truename org-directory))
   (org-roam-complete-everywhere t)
   (org-roam-capture-templates
-   '(("d" "default" plain "%?" :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t)
+   '(
+     ("d" "default" plain "%?"
+      :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t :immediate-finish t)
      ("b" "book notes" plain (file "~/src/roam/templates/BookNoteTemplate.org")
-      :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t)
+      :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t :immediate-finish t)
+     ("f" "finance" plain (file "~/src/roam/templates/FinanceTemplate.org")
+      :target (file+head "finance/${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: :Finance:draft:\n") :unarrowed t :immediate-finish t )
      ("l" "programming language" plain (file "~/src/roam/templates/LanguageTemplate.org")
-      :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t)))
+      :target (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n") :unnarrowed t :immediate-finish t)))
   :config
   (org-roam-setup)
   :bind (("C-c n f" . org-roam-node-find)
@@ -797,6 +811,18 @@
                 ("C-M-i" . completion-at-point))))
   :bind-keymap
   ("C-c n j" . org-roam-dailies-map))
+
+(defadvice org-roam-insert (around put-cursor-after-text activate)
+  "Make it so that org roam insert cursor goes after the inserted text"
+  (insert " ")
+  (save-excursion
+    (backward-char)
+    ad-do-it)
+  (insert " "))
+
+(defun mcsh/tag-new-node-as-draft ()
+  (org-roam-tag-add '("draft")))
+(add-hook 'org-roam-capture-new-node-hook #'mcsh/tag-new-node-as-draft)
 
 (add-to-list 'display-buffer-alist
              '("\\*org-roam\\*"
@@ -849,10 +875,10 @@
 (use-package simple-httpd
   :ensure t)
 
-;; (add-to-list 'load-path "~/.emacs.d/org-roam-ui/")
-;; (load-library "org-roam-ui")
-(use-package org-roam-ui
-  :ensure t)
+(add-to-list 'load-path "~/.emacs.d/org-roam-ui/")
+(load-library "org-roam-ui")
+;; (use-package org-roam-ui
+;;   :ensure t)
 
 (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
@@ -867,6 +893,8 @@
  '((ruby . t)
    (shell . t)
    (python . t)
+   (dot . t)
+   (gnuplot . t)
    (R . t)))
 
 (use-package ess
@@ -883,8 +911,25 @@
         bibtex-completion-library-path "~/src/manitoba/2.ref"
         bibtex-completion-notes-path "~/src/roam/"))
 
+
+(defun mcsh/bibtex-completion-format-citation-org-cite (keys)
+  "Format org-links using Org mode's own cite syntax."
+  (format "cite:%s"
+    (s-join ";"
+            (--map (format "%s" it) keys))))
+
 (use-package helm-bibtex
-  :ensure t)
+  :ensure t
+  :config
+  (setq bibtex-completion-format-citation-functions
+        '((org-mode . mcsh/bibtex-completion-format-citation-org-cite)
+          (latex-mode . bibtex-completion-format-citation-cite)
+          (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+          (python-mode . bibtex-completion-format-citation-sphinxcontrib-bibtex)
+          (rst-mode . bibtex-completion-format-citation-sphinxcontrib-bibtex)
+          (default . bibtex-completion-format-citation-default)))
+  (helm-add-action-to-source "Insert Link" 'helm-bibtex-insert-citation helm-source-bibtex 0)
+  )
 
 (use-package org-roam-bibtex
   :ensure t
@@ -984,5 +1029,71 @@
 
 ;; (use-package latex-preview-pane
 ;;   :ensure t)
+
+;; carbon
+(use-package carbon-now-sh
+  :ensure t)
+
+;; Sin
+(require 'sin)
+
+;; fold
+
+(use-package origami
+  :ensure t)
+
+;; ;; tabnine
+;; (use-package company-tabnine
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'company-backends #'company-tabnine)
+;;   (setq company-idle-delay 0)
+;;   (setq company-show-numbers t))
+
+;; copilot
+(use-package editorconfig
+  :ensure t)
+
+; Load copilot.el, modify this path to your local path.
+(load-file "~/.emacs.d/copilot.el/copilot.el")
+
+(add-hook 'prog-mode-hook 'copilot-mode)
+;; (customize-set-variable 'copilot-enable-predicates
+;;                         '(evil-insert-state-p))
+
+; complete by copilot first, then company-mode
+(defun my-tab ()
+  (interactive)
+  (or (copilot-accept-completion)
+      (company-indent-or-complete-common nil)))
+
+; modify company-mode behaviors
+(with-eval-after-load 'company
+  ; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends)
+  ; enable tab completion
+  (define-key company-mode-map (kbd "C-<tab>") 'my-tab)
+  (define-key company-mode-map (kbd "C-TAB") 'my-tab)
+  (define-key company-active-map (kbd "C-<tab>") 'my-tab)
+  (define-key company-active-map (kbd "C-TAB") 'my-tab))
+
+(with-eval-after-load 'copilot
+  (evil-define-key 'insert copilot-mode-map
+    (kbd "C-<tab>") #'my-tab))
+
+; provide completion when typing
+;; (add-hook 'post-command-hook (lambda ()
+;;                                (copilot-clear-overlay)
+;;                                (when (evil-insert-state-p)
+;;                                  (copilot-complete))))
+;; )
+;; (setup-copilot)
+
+(use-package org-sticky-header
+  :ensure t
+  :config
+  (setq org-sticky-header-full-path 'full)
+  (add-hook 'org-mode-hook 'org-sticky-header-mode))
+
 
 ;; EOF
