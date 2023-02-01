@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MONITOR=HDMI-1-0
+MONITOR=HDMI-0
 
 ROT=$(xrandr --query --verbose | grep "^$MONITOR" | cut -d ' ' -f 5)
 

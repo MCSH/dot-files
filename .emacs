@@ -1096,4 +1096,11 @@
   (add-hook 'org-mode-hook 'org-sticky-header-mode))
 
 
+;; Common Lisp Hyper Space
+
+(load "/home/sajjad/quicklisp/clhs-use-local.el" t) ;; C-c C-d h
+
+;; org agenda and windmove fix
+(require 'org-windmove)
+
 ;; EOF
