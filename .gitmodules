@@ -16,3 +16,5 @@
 [submodule ".emacs.d/copilot.el"]
 	path = .emacs.d/copilot.el
 	url = https://github.com/zerolfx/copilot.el
+[submodule ".emacs.d/flight-attendant.el"]
+	url = https://github.com/cryptobadger/flight-attendant.el
