@@ -26,3 +26,7 @@
 .emacs.d/eshell
 .emacs.d/org-roam.db
 .emacs.d/tramp
+.emacs.d/MCSH/my-secrets.el
+/.emacs.d/persist/
+/.emacs.d/.org-generic-id-locations
+.emacs.d/oauth2-auto.plist

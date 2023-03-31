@@ -152,15 +152,17 @@
 (defun my/org-agenda-calculate-efforts (limit)
   "Sum the efforts of scheduled entries up to LIMIT in the
 agenda buffer."
-  (let (total)
-    (save-excursion
-     (while (< (point) limit)
-       (when (member (org-get-at-bol 'type) '("scheduled" "past-scheduled" "timestamp"))
-         (push (org-entry-get (org-get-at-bol 'org-hd-marker) "Effort") total))
-       (forward-line)))
-     (cl-reduce #'+
-                (mapcar #'org-duration-to-minutes
-                        (cl-remove-if-not 'identity total)))))
+  (if limit
+    (let (total)
+      (save-excursion
+        (while (< (point) limit)
+          (when (member (org-get-at-bol 'type) '("scheduled" "past-scheduled" "timestamp"))
+            (push (org-entry-get (org-get-at-bol 'org-hd-marker) "Effort") total))
+          (forward-line)))
+      (cl-reduce #'+
+                 (mapcar #'org-duration-to-minutes
+                         (cl-remove-if-not 'identity total))))
+    0))
 
 (defun my/org-agenda-insert-efforts ()
   "Insert the efforts for each day inside the agenda buffer."

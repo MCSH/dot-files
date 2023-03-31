@@ -662,7 +662,11 @@
 ;; SLIME
 ;;(load (expand-file-name "~/.quicklisp/slime-helper.el"))
 (use-package slime
-  :ensure t)
+  :ensure t
+  :config
+  (evil-define-key 'normal slime-mode-map (kbd "g d") 'slime-edit-definition)
+  (evil-define-key 'normal slime-mode-map (kbd "g t d") 'slime-edit-definition-other-window)
+  )
 
 ;; Replace "sbcl" with the path to your implementation
 ;; (setq inferior-lisp-program "clisp")
@@ -1103,4 +1107,44 @@
 ;; org agenda and windmove fix
 (require 'org-windmove)
 
+;; org-gcal
+;; note: set org-gcal-client-id and org-gcal-client-secret in secrets.el
+
+(setq org-gcal-fetch-file-alist
+      '(("sajjadheydari74@gmail.com" . "~/src/personal/schedule.org")))
+
+(require 'my-secrets)
+
+(use-package org-gcal
+  :ensure t)
+
+(require 'org-gcal)
+
+(setq plstore-cache-passphrase-for-symmetric-encryption t)
+
+;; solve org-agenda line wrap error
+(add-hook 'org-agenda-mode-hook
+          (lambda ()
+            (linum-mode -1)))
+
+;; Slime over rpi
+
+(defvar *current-tramp-path* nil)
+(defun connect-to-host (path)
+  (setq *current-tramp-path* path)
+  (setq slime-translate-from-lisp-filename-function
+    (lambda (f)
+      (concat *current-tramp-path* f)))
+  (setq slime-translate-to-lisp-filename-function
+    (lambda (f)
+      (substring f (length *current-tramp-path*))))
+  (slime-connect "192.168.0.164" 4005))
+
+(defun rpi-slime ()
+  (interactive)
+  (connect-to-host "/ssh:192.168.0.164:"))
+
+(defun rpi-home-dir ()
+  (interactive)
+  (find-file (concat "/ssh:192.168.0.164:" "/home/sajjad/")))
 ;; EOF
