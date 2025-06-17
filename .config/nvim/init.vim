@@ -77,9 +77,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/unicode.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'Sudo npm install -g tern' }
-Plug 'zchee/deoplete-jedi'
 Plug 'ternjs/tern_for_vim'
 Plug 'alerque/vim-surround'
 "Plug 'tpope/vim-fugitive'
@@ -109,10 +106,6 @@ Plug 'alvan/vim-closetag'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
-
-Plug 'sebastianmarkow/deoplete-rust'
 Plug 'luochen1990/rainbow'
 Plug 'edwinb/idris2-vim'
 Plug 'github/copilot.vim'
@@ -132,9 +125,6 @@ let g:airline_theme='dark'
 
 " Unicode
 " TODO
-
-"Deoplete
-let g:deoplete#enable_at_startup = 1
 
 "tern_for_vim
 let g:tern#command = ['/usr/bin/tern']
@@ -287,11 +277,6 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDir="/home/sajjad/.config/nvim/snips"
 let g:UltiSnipsSnippetDirectories=["/home/sajjad/.config/nvim/snips", "UltiSnips"]
 
-" vimwiki
-" user leader ww to start the wiki
-nnoremap <leader>wv :call vimwiki#base#follow_link('vsplit', 0, 1)<CR>
-nnoremap <leader>wh :call vimwiki#base#follow_link('hsplit', 0, 1)<CR>
-
 " Easier zt and zb
 nnoremap zt zt2<c-y>
 nnoremap zb zb2<c-e>
@@ -299,12 +284,6 @@ nnoremap zb zb2<c-e>
 " Fold
 set foldmethod=syntax
 set nofoldenable " Disable by default
-
-" Rust
-let g:deoplete#sources#rust#racer_binary='/home/sajjad/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/sajjad/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-let g:deoplete#sources#rust#show_duplicates=1
-let g:deoplete#sources#rust#documentation_max_height=20
 
 " Rainbow
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle

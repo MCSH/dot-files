@@ -124,7 +124,7 @@
   
 ;; Scaling fonts
 
-(set-face-attribute 'default nil :height 110)
+(set-face-attribute 'default nil :height 90) ;; 110
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
 (defun zoomin ()
@@ -133,7 +133,7 @@
 
 (defun zoomout ()
   (interactive)
-  (set-face-attribute 'default nil :height 110))
+  (set-face-attribute 'default nil :height 90))
 
 ;; Remove the useless stuff
 (scroll-bar-mode -1)
@@ -176,6 +176,7 @@
 (use-package js2-mode
   :ensure t
   :config
+  (evil-define-key 'normal js2-mode-map (kbd "g d") 'js2-jump-to-definition)
   (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js2-mode)))
 
 ;; Helm
@@ -513,7 +514,7 @@
   :ensure t
   :config
   (golden-ratio-mode 0) ;; disable by default
-  (setq golden-ratio-adjust-factor        .6
+  (setq golden-ratio-adjust-factor       1.0 
         golden-ratio-wide-adjust-factor   .8)
 
 (defun fix-ratio (orig &rest args)
@@ -621,8 +622,8 @@
 (use-package typescript-mode
   :ensure t)
 
-(use-package tss
-  :ensure t)
+;; (use-package tss
+;;   :ensure t)
 
 (use-package tide
   :ensure t
@@ -675,6 +676,7 @@
   (evil-define-key 'normal slime-mode-map (kbd "g t d") 'slime-edit-definition-other-window)
   (evil-define-key 'normal slime-mode-map (kbd "g b") 'slime-pop-find-definition-stack)
   (evil-define-key 'normal slime-mode-map (kbd "g h") 'slime-documentation-lookup)
+  (evil-define-key 'normal slime-repl-mode-map (kbd "g i") 'slime-inspect-presentation-at-point)
   )
 
 ;; Replace "sbcl" with the path to your implementation
@@ -683,8 +685,8 @@
 
 (global-set-key (kbd "C-c C-e") 'slime-eval-last-expression-in-repl)
 
-;; C#
-(use-package csharp-mode
+;; Helm Slime
+(use-package helm-slime
   :ensure t)
 
 ;; protobuf
@@ -1052,8 +1054,8 @@
 
 ;; fold
 
-(use-package origami
-  :ensure t)
+;; (use-package origami
+  ;; :ensure t)
 
 ;; ;; tabnine
 ;; (use-package company-tabnine
@@ -1159,10 +1161,10 @@
 
 (defun connect-tornado ()
   (interactive)
-  (setq mslime-dirlist '(("/home/sajjad/src/2023/3.torn/" . "/home/ubuntu/tornado/")
-                         ("/home/sajjad/common-lisp/clog/" . "/home/ubuntu/quicklisp/dists/quicklisp/software/clog-20230618-git/")
-                         ("/home/sajjad/quicklisp/dists/quicklisp/software/lispcord-20200925-git/" . "/home/ubuntu/quicklisp/dists/quicklisp/software/lispcord-20230618-git/")
-                         ("/home/sajjad/quicklisp/" . "/home/ubuntu/quicklisp/")
+  (setq mslime-dirlist '(("/home/sajjad/src/2023/3.torn/" . "/root/tornado/")
+                         ("/home/sajjad/common-lisp/clog/" . "/root/quicklisp/dists/quicklisp/software/clog-20230618-git/")
+                         ("/home/sajjad/quicklisp/dists/quicklisp/software/lispcord-20200925-git/" . "/root/quicklisp/dists/quicklisp/software/lispcord-20230618-git/")
+                         ("/home/sajjad/quicklisp/" . "/root/quicklisp/")
                          ))
     (setq slime-from-lisp-filename-function
           (lambda (f)

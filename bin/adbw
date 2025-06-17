@@ -1,0 +1,16 @@
+#!/bin/bash
+IP=$1
+if [ -z "$2" ]
+then
+    PORT=$(nmap $IP -p 37000-46000 | awk "/\/tcp/" | cut -d/ -f1)
+else
+    PORT=$2
+fi
+
+adb connect $IP:$PORT
+sleep 1
+adb tcpip 5555
+sleep 1
+adb disconnect
+sleep 1
+adb connect $IP:5555
