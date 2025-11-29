@@ -30,3 +30,4 @@
 /.emacs.d/persist/
 /.emacs.d/.org-generic-id-locations
 .emacs.d/oauth2-auto.plist
+.emacs.d/eln-cache
