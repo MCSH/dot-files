@@ -31,3 +31,6 @@
 /.emacs.d/.org-generic-id-locations
 .emacs.d/oauth2-auto.plist
 .emacs.d/eln-cache
+bin/lethalcompany.sh
+bin/qlik
+bin/sims_*
