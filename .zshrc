@@ -100,6 +100,10 @@ export RUMI_PATH=~/.local/share/rumi/
 # Fix cargo completion issue
 compinit
 
+# Register jump/unmark completions (must be after compinit)
+compdef _comp_jump jump
+compdef _comp_unmark unmark
+
 # opam configuration
 test -r /home/sajjad/.opam/opam-init/init.zsh && . /home/sajjad/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
