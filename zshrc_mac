@@ -1,0 +1,78 @@
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/sajjad/src/git/dot-files/.oh-my-zsh
+
+ZSH_THEME="eastwood"
+
+# Custom folder for completions, plugins, and themes
+ZSH_CUSTOM=/Users/sajjad/.zsh-custom/
+
+# Add custom completions to fpath
+fpath=($ZSH_CUSTOM/completions $fpath)
+
+#plugins=(git jump flutter cargo golang stack yarn history-substring-search)
+plugins=(git jump flutter mix-fast history-substring-search)
+
+export DISABLE_AUTO_UPDATE="true" 
+
+source $ZSH/oh-my-zsh.sh
+
+# Keep the eastwood prompt format, but show the path segment in orange.
+PROMPT='$(git_custom_status)%{$FG[214]%}[%~% ]%{$reset_color%}%B$%b '
+
+unset DISABLE_AUTO_UPDATE
+
+# User configuration
+
+# File manager key bound (Alt+Left/Up)
+cdUndoKey() {
+  popd
+  zle       reset-prompt
+  echo
+  ls
+  zle       reset-prompt
+}
+
+cdParentKey() {
+  pushd ..
+  zle      reset-prompt
+  echo
+  ls
+  zle       reset-prompt
+}
+
+zle -N                 cdParentKey
+zle -N                 cdUndoKey
+bindkey '^[[1;3A'      cdUndoKey
+bindkey '^[[1;3D'      cdParentKey
+
+# Environment variables
+export LANG=en_US.UTF-8
+export EDITOR=nvim
+
+# Git aliases
+alias gstat="git status"
+alias gadd="git add"
+alias gcom="git commit -m"
+alias gpush="git push"
+alias gpull="git pull"
+
+# General aliases
+alias ls='ls -v --color=tty'
+alias vim=nvim
+
+# Emacs aliases
+alias emacs='emacsclient -n -a ""'
+alias emacs-win='emacsclient -n -c -a ""'
+alias em=emacs
+alias :q=exit
+
+# Fix cargo completion issue
+compinit
+
+# Register jump/unmark completions (must be after compinit)
+compdef _comp_jump jump
+compdef _comp_unmark unmark
+
+# Disabled configurations (uncomment to enable)
+# eval "$(direnv hook zsh)"
+# export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/3.*/Sdks );
