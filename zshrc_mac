@@ -69,9 +69,8 @@ alias :q=exit
 # Fix cargo completion issue
 compinit
 
-# Register jump/unmark completions (must be after compinit)
-compdef _comp_jump jump
-compdef _comp_unmark unmark
+# Source custom jump functions with completions
+source /Users/sajjad/src/git/dot-files/zsh/jump.zsh
 
 # Disabled configurations (uncomment to enable)
 # eval "$(direnv hook zsh)"
